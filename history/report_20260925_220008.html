@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雪球大V多空观点与交易动作总结 - 2026-09-25 22:00:08</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, "Microsoft YaHei", sans-serif; background:#f5f7fa; color:#333; line-height:1.6; }
+.container { max-width:1200px; margin:0 auto; padding:20px; }
+.header { background:linear-gradient(135deg,#1a1a2e,#16213e); color:#fff; padding:30px; border-radius:12px; margin-bottom:20px; }
+.header h1 { font-size:24px; margin-bottom:8px; }
+.header .meta { font-size:14px; opacity:0.85; }
+.stats { display:grid; grid-template-columns:repeat(4,1fr); gap:15px; margin-bottom:25px; }
+.stat-card { background:#fff; padding:20px; border-radius:10px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.stat-card .num { font-size:32px; font-weight:bold; color:#1a1a2e; }
+.stat-card .label { font-size:13px; color:#888; margin-top:4px; }
+.section { background:#fff; border-radius:12px; padding:25px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.section h2 { font-size:18px; margin-bottom:15px; padding-bottom:10px; border-bottom:2px solid #eee; color:#1a1a2e; }
+.section h2::before { content:""; display:inline-block; width:4px; height:18px; background:#e94560; margin-right:10px; vertical-align:middle; border-radius:2px; }
+.tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:12px; margin-right:5px; font-weight:500; }
+.tag-buy { background:#ffe0e0; color:#d32f2f; }
+.tag-sell { background:#e0f0ff; color:#1565c0; }
+.tag-bull { background:#fff3e0; color:#e65100; }
+.tag-bear { background:#f3e5f5; color:#7b1fa2; }
+.tag-user { background:#e8f5e9; color:#2e7d32; }
+.stock-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(350px,1fr)); gap:15px; }
+.stock-card { border:1px solid #eee; border-radius:8px; padding:15px; background:#fafbfc; }
+.stock-header { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+.stock-name { font-size:16px; font-weight:bold; color:#1a1a2e; }
+.stock-code { font-size:12px; color:#999; }
+.stock-sector { font-size:11px; background:#e3f2fd; color:#1565c0; padding:1px 6px; border-radius:3px; }
+.stock-tags { margin-bottom:6px; }
+.stock-users { font-size:12px; color:#666; margin-bottom:8px; }
+.post-item { background:#fff; border-left:3px solid #e94560; padding:10px 12px; margin:8px 0; border-radius:0 6px 6px 0; }
+.post-meta { display:flex; gap:10px; align-items:center; font-size:12px; color:#888; margin-bottom:4px; flex-wrap:wrap; }
+.post-user { font-weight:bold; color:#333; }
+.post-opinion { padding:1px 6px; border-radius:3px; font-size:11px; }
+.op-买入\/加仓 { background:#ffe0e0; color:#d32f2f; }
+.op-卖出\/减仓 { background:#e0f0ff; color:#1565c0; }
+.op-看多 { background:#fff3e0; color:#e65100; }
+.op-看空 { background:#f3e5f5; color:#7b1fa2; }
+.op-持有 { background:#e8f5e9; color:#2e7d32; }
+.op-中性\/讨论 { background:#f5f5f5; color:#757575; }
+.op-买卖混合 { background:#fce4ec; color:#c2185b; }
+.op-偏多 { background:#fff3e0; color:#e65100; }
+.op-偏空 { background:#f3e5f5; color:#7b1fa2; }
+.op-多空分歧 { background:#fff8e1; color:#f57f17; }
+.strength { font-size:11px; padding:2px 8px; border-radius:3px; margin-left:auto; font-weight:600; }
+.bull-strength { background:#ffebee; color:#c62828; }
+.bear-strength { background:#e8eaf6; color:#283593; }
+.neutral-strength { background:#f5f5f5; color:#757575; }
+.post-text { font-size:13px; color:#444; }
+.post-link { color:#1565c0; text-decoration:none; }
+.post-link:hover { text-decoration:underline; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th, td { padding:10px 8px; text-align:left; border-bottom:1px solid #eee; }
+th { background:#f8f9fa; font-weight:600; color:#555; }
+tr:hover { background:#f8f9fa; }
+.sector-title { font-size:15px; color:#1a1a2e; margin:20px 0 10px; padding-left:10px; border-left:3px solid #0f3460; }
+.user-block { margin-bottom:20px; }
+.user-header { display:flex; gap:12px; align-items:center; margin-bottom:8px; flex-wrap:wrap; }
+.user-name { font-size:15px; font-weight:bold; color:#1a1a2e; }
+.user-count { font-size:12px; color:#888; }
+.user-stocks { font-size:12px; color:#666; }
+.conclusion { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+.conclusion-box { padding:15px; border-radius:8px; }
+.conclusion-bull { background:#fff5f5; border:1px solid #ffcdd2; }
+.conclusion-bear { background:#f5f5ff; border:1px solid #c5cae9; }
+.conclusion-box h3 { font-size:14px; margin-bottom:8px; }
+.conclusion-bull h3 { color:#c62828; }
+.conclusion-bear h3 { color:#283593; }
+.conclusion-box ul { padding-left:18px; font-size:13px; }
+.conclusion-box li { margin:4px 0; }
+.footer { text-align:center; padding:20px; color:#999; font-size:12px; }
+.nav-tabs { display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap; }
+.nav-tab { padding:8px 16px; background:#fff; border-radius:6px; text-decoration:none; color:#555; font-size:13px; box-shadow:0 1px 3px rgba(0,0,0,0.1); }
+.nav-tab.active { background:#e94560; color:#fff; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>雪球大V多空观点与交易动作总结</h1>
+    <div class="meta">更新时间：2026-09-25 22:00:08 ｜ 数据范围：近2天 ｜ 关注43人 ｜ 活跃26人 ｜ 总发言167条 ｜ 股票相关13条（已过滤154条无关发言）</div>
+</div>
+
+<div class="stats">
+    <div class="stat-card"><div class="num">16</div><div class="label">提及股票</div></div>
+    <div class="stat-card"><div class="num">3</div><div class="label">看多标的</div></div>
+    <div class="stat-card"><div class="num">5</div><div class="label">看空标的</div></div>
+    <div class="stat-card"><div class="num">3</div><div class="label">明确操作</div></div>
+</div>
+
+<div class="section">
+    <h2>一、核心结论</h2>
+    <div class="conclusion">
+        <div class="conclusion-box conclusion-bull">
+            <h3>主要看多 / 买入标的</h3>
+            <ul>
+                <li><b>天齐锂业</b>（有色资源）-- 1人提及，买入1次，看多1次</li><li><b>赣锋锂业</b>（有色资源）-- 1人提及，买入1次，看多1次</li><li><b>麦当劳</b>（其他）-- 1人提及，买入0次，看多1次</li>
+            </ul>
+        </div>
+        <div class="conclusion-box conclusion-bear">
+            <h3>主要看空 / 卖出标的</h3>
+            <ul>
+                <li><b>纳斯达克</b>（其他）-- 卖出0次，看空1次</li><li><b>英伟达</b>（其他）-- 卖出0次，看空1次</li><li><b>山东黄金</b>（有色资源）-- 卖出0次，看空0次</li><li><b>招金矿业</b>（有色资源）-- 卖出0次，看空0次</li><li><b>中矿资源</b>（其他）-- 卖出0次，看空0次</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>二、明确交易、加仓与仓位变化</h2>
+    <table><tr><th>时间</th><th>大V</th><th>标的</th><th>操作</th><th>详情</th><th>原文</th></tr>
+        <tr>
+            <td>2026-09-24 10:23</td>
+            <td>伊夫圣洛朗</td>
+            <td>盐湖股份</td>
+            <td><span class="tag tag-buy">加仓</span></td>
+            <td>$盐湖股份(SZ000792)$ 继续加仓，想要跟我一起买盐湖的兄弟们，先别急着加仓，我后面还有不</td>
+            <td><a href="https://xueqiu.com/1066188300/410447558" target="_blank">原文</a></td>
+        </tr>
+        <tr>
+            <td>2026-09-24 10:37</td>
+            <td>人生是历练</td>
+            <td>山东黄金、招金矿业、中矿资源</td>
+            <td><span class="tag tag-buy">买入</span></td>
+            <td>$山东黄金(01787)$买入虽然是很少，但是态度需明确。大A和港股黄金股跌跌不休，短</td>
+            <td><a href="https://xueqiu.com/1344684945/410451970" target="_blank">原文</a></td>
+        </tr>
+        <tr>
+            <td>2026-09-25 08:53</td>
+            <td>雪月霜</td>
+            <td>天齐锂业、赣锋锂业</td>
+            <td><span class="tag tag-buy">买入</span></td>
+            <td>$ 从市场情绪和企业估值角度看，目前存在买入机会，但是还是有点早，年底再看吧，估值还没到很合适位置，</td>
+            <td><a href="https://xueqiu.com/1505944393/410567797" target="_blank">原文</a></td>
+        </tr></table>
+</div>
+
+<div class="section">
+    <h2>三、主要看多与推荐标的</h2>
+    <div class="stock-grid">
+        
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">天齐锂业</span>
+                <span class="stock-code">SZ002466</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bull-strength">看多强度 +4</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：雪月霜</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">雪月霜</span>
+                        <span class="post-time">2026-09-25 08:53</span>
+                        <span class="post-opinion op-买入/加仓">买入/加仓</span>
+                        <a href="https://xueqiu.com/1505944393/410567797" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">$天齐锂业(SZ002466)$ $赣锋锂业(SZ002460)$ 从市场情绪和企业估值角度看，目前存在买入机会，但是还是有点早，年底再看吧，估值还没到很合适位置，不过按照最极端情况估算，很多股就算按照最极端情况也就是再跌30%左右，也可以考虑开始买入了，就算是真的发生这种极端情况，也可以把成本控制住了，但是如果不是呢，那明年会有不错的收益，整体上从投资性价比是有一定的</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">赣锋锂业</span>
+                <span class="stock-code">SZ002460</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bull-strength">看多强度 +4</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：雪月霜</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">雪月霜</span>
+                        <span class="post-time">2026-09-25 08:53</span>
+                        <span class="post-opinion op-买入/加仓">买入/加仓</span>
+                        <a href="https://xueqiu.com/1505944393/410567797" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">$天齐锂业(SZ002466)$ $赣锋锂业(SZ002460)$ 从市场情绪和企业估值角度看，目前存在买入机会，但是还是有点早，年底再看吧，估值还没到很合适位置，不过按照最极端情况估算，很多股就算按照最极端情况也就是再跌30%左右，也可以考虑开始买入了，就算是真的发生这种极端情况，也可以把成本控制住了，但是如果不是呢，那明年会有不错的收益，整体上从投资性价比是有一定的</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">麦当劳</span>
+                <span class="stock-code">MCD</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：天地侠影</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">天地侠影</span>
+                        <span class="post-time">2026-09-24 17:35</span>
+                        <span class="post-opinion op-看多">看多</span>
+                        <a href="https://xueqiu.com/8601813520/410524898" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">雪球越来越没有什么可读性，也许是行情略微有些沉闷，也许是AI可以回答90%的投资问题和信息汇总，也许是自己对研究新的股票已经彻底失去兴趣。越来越觉得，真正的好公司、好股票，是没有故事可讲的。比如，一个股票投资者，拿上$麦当劳(MCD)$ 六十年，这六十年的投资旅程中，实在也没什么可谈的，每天都是平淡无奇。或许，我们要寻找的，也是象麦当劳这样，没有故事可讲的股票，没有周期，没有风雨，没有变幻，每天都是波澜不惊，只有长期慢慢的成长，永续经营。如果持有一只股票，每天必须讲些故事，肯定是有致命伤。要么是公司有问题，要么是自己不够坚定。</div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>四、主要看空、回避与谨慎标的</h2>
+    <div class="stock-grid">
+        
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">纳斯达克</span>
+                <span class="stock-code">NDAQ</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength bear-strength">看空强度 -3</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bear">看空1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：徒步三萬里</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">徒步三萬里</span>
+                        <span class="post-time">2026-09-24 10:37</span>
+                        <span class="post-opinion op-偏空">偏空</span>
+                        <a href="https://xueqiu.com/4857977486/410451903" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">【PMI意外爆表！美债遭血洗、10年期破5%，纳指终结四连涨|附QDII基金最新申购限额】· 高盛 Rich Privorotsky：这越来越像是对强劲增长假设的反映——6% 财政赤字加上 1.5 万亿美元支出，意味着大量债券发行和大量名义增长；对股市而言，这是更清晰的宏观风险，不是失控的通胀，而是持续偏高的实际资金成本。· SEI Investments（Sean Simko）：面对今天这列轰鸣而来的&quot;大卡车&quot;，谁也不想螳臂当车。美债正遭三重重击——经济数据超预期强劲、新债海量供给推升 5 年期收益率创多年新高、全球通胀顽固难降的悲观预期。· FHN Financial（Will Compe</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">英伟达</span>
+                <span class="stock-code">NVDA</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength bear-strength">看空强度 -3</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bear">看空1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：徒步三萬里</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">徒步三萬里</span>
+                        <span class="post-time">2026-09-24 10:37</span>
+                        <span class="post-opinion op-偏空">偏空</span>
+                        <a href="https://xueqiu.com/4857977486/410451903" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">【PMI意外爆表！美债遭血洗、10年期破5%，纳指终结四连涨|附QDII基金最新申购限额】· 高盛 Rich Privorotsky：这越来越像是对强劲增长假设的反映——6% 财政赤字加上 1.5 万亿美元支出，意味着大量债券发行和大量名义增长；对股市而言，这是更清晰的宏观风险，不是失控的通胀，而是持续偏高的实际资金成本。· SEI Investments（Sean Simko）：面对今天这列轰鸣而来的&quot;大卡车&quot;，谁也不想螳臂当车。美债正遭三重重击——经济数据超预期强劲、新债海量供给推升 5 年期收益率创多年新高、全球通胀顽固难降的悲观预期。· FHN Financial（Will Compe</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">山东黄金</span>
+                <span class="stock-code">01787</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bear-strength">看空强度 -1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：人生是历练</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">人生是历练</span>
+                        <span class="post-time">2026-09-24 21:15</span>
+                        <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                        <a href="https://xueqiu.com/1344684945/410544231" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">这个公告产量计划宣示，说明国内矿山安全投入和安全检查升级了。对国内矿山都存在压力。 而公司这么早宣告全年净利润下降，似乎是不负责任的，毕竟四季度金价仍然是未知数，这个公告如果不是不负责任，那就是吓唬投资者了。$山东黄金(01787)$ $山东黄金(SH600547)$</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">人生是历练</span>
+                        <span class="post-time">2026-09-24 10:37</span>
+                        <span class="post-opinion op-买入/加仓">买入/加仓</span>
+                        <a href="https://xueqiu.com/1344684945/410451970" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">$山东黄金(01787)$买入虽然是很少，但是态度需明确。大A和港股黄金股跌跌不休，短线交易被量化资金裹挟，但是中长线的逻辑和短线是不一样的。做正确的事，然后剩下的就交给耐心和坚持。股市有风险，投资需谨慎！。$招金矿业(01818)$$中矿资源(SZ002738)$</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">招金矿业</span>
+                <span class="stock-code">01818</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bear-strength">看空强度 -1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：人生是历练</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">人生是历练</span>
+                        <span class="post-time">2026-09-24 10:37</span>
+                        <span class="post-opinion op-买入/加仓">买入/加仓</span>
+                        <a href="https://xueqiu.com/1344684945/410451970" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">$山东黄金(01787)$买入虽然是很少，但是态度需明确。大A和港股黄金股跌跌不休，短线交易被量化资金裹挟，但是中长线的逻辑和短线是不一样的。做正确的事，然后剩下的就交给耐心和坚持。股市有风险，投资需谨慎！。$招金矿业(01818)$$中矿资源(SZ002738)$</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">中矿资源</span>
+                <span class="stock-code">SZ002738</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength bear-strength">看空强度 -1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：人生是历练</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">人生是历练</span>
+                        <span class="post-time">2026-09-24 10:37</span>
+                        <span class="post-opinion op-买入/加仓">买入/加仓</span>
+                        <a href="https://xueqiu.com/1344684945/410451970" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">$山东黄金(01787)$买入虽然是很少，但是态度需明确。大A和港股黄金股跌跌不休，短线交易被量化资金裹挟，但是中长线的逻辑和短线是不一样的。做正确的事，然后剩下的就交给耐心和坚持。股市有风险，投资需谨慎！。$招金矿业(01818)$$中矿资源(SZ002738)$</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">人生是历练</span>
+                        <span class="post-time">2026-09-24 10:30</span>
+                        <span class="post-opinion op-多空分歧">多空分歧</span>
+                        <a href="https://xueqiu.com/1344684945/410449850" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@风靡乾坤: 说的很客观啊。对锂的供需说的比较通透。个人认为，如果从生命周期看，锂的需求已经是从一个小小儿童成长为成年人了，年产量的产值已经是超过大金属锌的体量，指望他的需求再高速增长不太现实，而且存在钠离子和钙钛矿三元电池等替代材料的危胁。而锂的供应端，盐湖提锂技术提高了经济效益和未来产量预期，而锂矿投产周期比其他金属要短。另外，回收锂未来会有持续的增量。个人观点，锂经历了高速成长期的供需错配的极端价格和供应端产能释放集中投产的下跌后，未来会像高楼落下的皮球一样，价格弹性越来越小。直到长期供需均衡，价格窄幅空间震荡。越往后，指望价格大起大落的可能性越小，投资锂矿股超预期的收益率的可能性也</div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>五、按赛道分类</h2>
+    <h3 class="sector-title">有色资源（9只）</h3><div class="stock-grid">
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">天齐锂业</span>
+                <span class="stock-code">SZ002466</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bull-strength">看多强度 +4</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：雪月霜</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">赣锋锂业</span>
+                <span class="stock-code">SZ002460</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bull-strength">看多强度 +4</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：雪月霜</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">紫金矿业</span>
+                <span class="stock-code">SH601899</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">2人</span></div>
+            <div class="stock-users">提及：斯托伯的天空、金哥777</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">盐湖股份</span>
+                <span class="stock-code">SZ000792</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-sell">卖出1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：伊夫圣洛朗</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">山东黄金</span>
+                <span class="stock-code">SH600547</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：人生是历练</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">藏格矿业</span>
+                <span class="stock-code">SZ000408</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：金哥777</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">神火股份</span>
+                <span class="stock-code">SZ000933</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：超级鹿鼎公</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">山东黄金</span>
+                <span class="stock-code">01787</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bear-strength">看空强度 -1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：人生是历练</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">招金矿业</span>
+                <span class="stock-code">01818</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bear-strength">看空强度 -1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：人生是历练</div>
+            
+        </div></div><h3 class="sector-title">能源煤炭（2只）</h3><div class="stock-grid">
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">中国石油股份</span>
+                <span class="stock-code">00857</span>
+                <span class="stock-sector">能源煤炭</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">中国海洋石油</span>
+                <span class="stock-code">00883</span>
+                <span class="stock-sector">能源煤炭</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+        </div></div><h3 class="sector-title">其他（5只）</h3><div class="stock-grid">
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">麦当劳</span>
+                <span class="stock-code">MCD</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：天地侠影</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">恒生指数</span>
+                <span class="stock-code">HKHSI</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">中矿资源</span>
+                <span class="stock-code">SZ002738</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength bear-strength">看空强度 -1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：人生是历练</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">纳斯达克</span>
+                <span class="stock-code">NDAQ</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength bear-strength">看空强度 -3</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bear">看空1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：徒步三萬里</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">英伟达</span>
+                <span class="stock-code">NVDA</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength bear-strength">看空强度 -3</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bear">看空1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：徒步三萬里</div>
+            
+        </div></div>
+</div>
+
+<div class="section">
+    <h2>六、大V股票相关发言明细</h2>
+    
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">人生是历练</span>
+                <span class="user-count">3条股票相关发言</span>
+                <span class="user-stocks">涉及：山东黄金、招金矿业、中矿资源</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-24 21:15</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/1344684945/410544231" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">这个公告产量计划宣示，说明国内矿山安全投入和安全检查升级了。对国内矿山都存在压力。 而公司这么早宣告全年净利润下降，似乎是不负责任的，毕竟四季度金价仍然是未知数，这个公告如果不是不负责任，那就是吓唬投资者了。$山东黄金(01787)$ $山东黄金(SH600547)$</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-24 10:37</span>
+                    <span class="post-opinion op-买入/加仓">买入/加仓</span>
+                    <a href="https://xueqiu.com/1344684945/410451970" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$山东黄金(01787)$买入虽然是很少，但是态度需明确。大A和港股黄金股跌跌不休，短线交易被量化资金裹挟，但是中长线的逻辑和短线是不一样的。做正确的事，然后剩下的就交给耐心和坚持。股市有风险，投资需谨慎！。$招金矿业(01818)$$中矿资源(SZ002738)$</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-24 10:30</span>
+                    <span class="post-opinion op-多空分歧">多空分歧</span>
+                    <a href="https://xueqiu.com/1344684945/410449850" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">回复@风靡乾坤: 说的很客观啊。对锂的供需说的比较通透。个人认为，如果从生命周期看，锂的需求已经是从一个小小儿童成长为成年人了，年产量的产值已经是超过大金属锌的体量，指望他的需求再高速增长不太现实，而且存在钠离子和钙钛矿三元电池等替代材料的危胁。而锂的供应端，盐湖提锂技术提高了经济效益和未来产量预期，而锂矿投产周期比其他金属要短。另外，回收锂未来会有持续的增量。个人观点，锂经历了高速成长期的供需错配的极端价格和供应端产能释放集中投产的下跌后，未来会像高楼落下的皮球一样，价格弹性越来越小。直到长期供需均衡，价格窄幅空间震荡。越往后，指望价格大起大落的可能性越小，投资锂矿股超预期的收益率的可能性也越小，除非股价跌幅超预期后才有大机会。$中矿资源(SZ002738)$一家之言，未必正确，仅供参考！股市有风险，投资需谨慎！//@风靡乾坤:回复@慢慢来811:@人生是历练 你怎么看？</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">金哥777</span>
+                <span class="user-count">3条股票相关发言</span>
+                <span class="user-stocks">涉及：紫金矿业、藏格矿业</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-25 19:39</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/1674052027/410597806" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">非常不错的图，财富密码，祝中秋快乐，万事如意，心想事成，财源滚滚。。。$紫金矿业(SH601899)$ $藏格矿业(SZ000408)$</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-25 09:08</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/1674052027/410568375" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">回复@Gjnnk: 具体情况不清楚，上次股东大会管理层也说了这类问题，三期尾矿库巨龙这边已经有了一个非常好的方案，如果国家批准这尾矿库可以用50年以上，基本属于永续的尾矿库了。。。但用地面积非常大，地方政府要协调用地指标，还需等国家批准，巨龙铜矿三期我个人认为是肯定会获批建设的，就是时间问题，最晚应该不会超过2028年吧。$紫金矿业(SH601899)$ $藏格矿业(SZ000408)$//@Gjnnk:回复@金哥777:金哥，大摩在巨龙铜业调研中提到了巨龙三期项目正在等待尾矿库（堆存选矿废渣的环保设施）批文。现在三期卡在这个点。</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-24 11:00</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/1674052027/410458325" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">回复@杨生的记事簿: 那人被我屏蔽了，应该就是东方财富以前经常被山高老师骂的那人，从藏格几块钱开始黑这公司和山高老师，股票涨十倍了还天天黑藏格矿业，然后又注册不同小号来雪球黑藏格矿业，对于这种人建议你赶快拉黑。。。$藏格矿业(SZ000408)$//@杨生的记事簿:回复@四季春夏秋冬:害了啥？虽然我的投资不算成功，但是在藏格矿业上还是赚了一套房子的。</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">斯托伯的天空</span>
+                <span class="user-count">2条股票相关发言</span>
+                <span class="user-stocks">涉及：恒生指数、紫金矿业、中国石油股份、中国海洋石油</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-25 18:10</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/9493911686/410594939" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">今日份搞定，自取。祝大家中秋快乐，阖家幸福，投资顺利$中国石油股份(00857)$ $中国海洋石油(00883)$ $紫金矿业(SH601899)$</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-25 09:34</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/9493911686/410569923" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">没有内资的港股连路边一条都不如。外资根本不敢来，这几年被割怕了。$恒生指数(HKHSI)$ $中国海洋石油(00883)$ $中国石油股份(00857)$</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">天地侠影</span>
+                <span class="user-count">1条股票相关发言</span>
+                <span class="user-stocks">涉及：麦当劳</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-24 17:35</span>
+                    <span class="post-opinion op-看多">看多</span>
+                    <a href="https://xueqiu.com/8601813520/410524898" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">雪球越来越没有什么可读性，也许是行情略微有些沉闷，也许是AI可以回答90%的投资问题和信息汇总，也许是自己对研究新的股票已经彻底失去兴趣。越来越觉得，真正的好公司、好股票，是没有故事可讲的。比如，一个股票投资者，拿上$麦当劳(MCD)$ 六十年，这六十年的投资旅程中，实在也没什么可谈的，每天都是平淡无奇。或许，我们要寻找的，也是象麦当劳这样，没有故事可讲的股票，没有周期，没有风雨，没有变幻，每天都是波澜不惊，只有长期慢慢的成长，永续经营。如果持有一只股票，每天必须讲些故事，肯定是有致命伤。要么是公司有问题，要么是自己不够坚定。</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">伊夫圣洛朗</span>
+                <span class="user-count">1条股票相关发言</span>
+                <span class="user-stocks">涉及：盐湖股份</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-24 10:23</span>
+                    <span class="post-opinion op-买卖混合">买卖混合</span>
+                    <a href="https://xueqiu.com/1066188300/410447558" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$盐湖股份(SZ000792)$ 继续加仓，想要跟我一起买盐湖的兄弟们，先别急着加仓，我后面还有不少子弹。</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">雪月霜</span>
+                <span class="user-count">1条股票相关发言</span>
+                <span class="user-stocks">涉及：赣锋锂业、天齐锂业</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-25 08:53</span>
+                    <span class="post-opinion op-买入/加仓">买入/加仓</span>
+                    <a href="https://xueqiu.com/1505944393/410567797" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$天齐锂业(SZ002466)$ $赣锋锂业(SZ002460)$ 从市场情绪和企业估值角度看，目前存在买入机会，但是还是有点早，年底再看吧，估值还没到很合适位置，不过按照最极端情况估算，很多股就算按照最极端情况也就是再跌30%左右，也可以考虑开始买入了，就算是真的发生这种极端情况，也可以把成本控制住了，但是如果不是呢，那明年会有不错的收益，整体上从投资性价比是有一定的</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">徒步三萬里</span>
+                <span class="user-count">1条股票相关发言</span>
+                <span class="user-stocks">涉及：纳斯达克、英伟达</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-24 10:37</span>
+                    <span class="post-opinion op-偏空">偏空</span>
+                    <a href="https://xueqiu.com/4857977486/410451903" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">【PMI意外爆表！美债遭血洗、10年期破5%，纳指终结四连涨|附QDII基金最新申购限额】· 高盛 Rich Privorotsky：这越来越像是对强劲增长假设的反映——6% 财政赤字加上 1.5 万亿美元支出，意味着大量债券发行和大量名义增长；对股市而言，这是更清晰的宏观风险，不是失控的通胀，而是持续偏高的实际资金成本。· SEI Investments（Sean Simko）：面对今天这列轰鸣而来的&quot;大卡车&quot;，谁也不想螳臂当车。美债正遭三重重击——经济数据超预期强劲、新债海量供给推升 5 年期收益率创多年新高、全球通胀顽固难降的悲观预期。· FHN Financial（Will Compernolle）：经济强到能承受加息，与经济强到开始推升通胀压力，是两种截然不同的情形——前者容许美联储专注通胀而不必过度担忧就业；后者则要求更激进、更紧迫的紧缩。· 富国银行投资研究所（Tony Mi</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">超级鹿鼎公</span>
+                <span class="user-count">1条股票相关发言</span>
+                <span class="user-stocks">涉及：神火股份</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-24 09:08</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/8790885129/410426129" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$神火股份(SZ000933)$ 最新社会库存只有65万吨了，记得6月份还有149万吨</div>
+            </div></div>
+</div>
+
+<div class="footer">
+    本报告由程序自动生成，数据来源于雪球网公开信息，仅供参考，不构成投资建议。<br>
+    生成时间：2026-09-25 22:00:08
+</div>
+</div>
+</body>
+</html>
