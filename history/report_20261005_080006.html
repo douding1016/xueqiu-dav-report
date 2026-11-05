@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雪球大V多空观点与交易动作总结 - 2026-10-05 08:00:06</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, "Microsoft YaHei", sans-serif; background:#f5f7fa; color:#333; line-height:1.6; }
+.container { max-width:1200px; margin:0 auto; padding:20px; }
+.header { background:linear-gradient(135deg,#1a1a2e,#16213e); color:#fff; padding:30px; border-radius:12px; margin-bottom:20px; }
+.header h1 { font-size:24px; margin-bottom:8px; }
+.header .meta { font-size:14px; opacity:0.85; }
+.stats { display:grid; grid-template-columns:repeat(4,1fr); gap:15px; margin-bottom:25px; }
+.stat-card { background:#fff; padding:20px; border-radius:10px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.stat-card .num { font-size:32px; font-weight:bold; color:#1a1a2e; }
+.stat-card .label { font-size:13px; color:#888; margin-top:4px; }
+.section { background:#fff; border-radius:12px; padding:25px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.section h2 { font-size:18px; margin-bottom:15px; padding-bottom:10px; border-bottom:2px solid #eee; color:#1a1a2e; }
+.section h2::before { content:""; display:inline-block; width:4px; height:18px; background:#e94560; margin-right:10px; vertical-align:middle; border-radius:2px; }
+.tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:12px; margin-right:5px; font-weight:500; }
+.tag-buy { background:#ffe0e0; color:#d32f2f; }
+.tag-sell { background:#e0f0ff; color:#1565c0; }
+.tag-bull { background:#fff3e0; color:#e65100; }
+.tag-bear { background:#f3e5f5; color:#7b1fa2; }
+.tag-user { background:#e8f5e9; color:#2e7d32; }
+.stock-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(350px,1fr)); gap:15px; }
+.stock-card { border:1px solid #eee; border-radius:8px; padding:15px; background:#fafbfc; }
+.stock-header { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+.stock-name { font-size:16px; font-weight:bold; color:#1a1a2e; }
+.stock-code { font-size:12px; color:#999; }
+.stock-sector { font-size:11px; background:#e3f2fd; color:#1565c0; padding:1px 6px; border-radius:3px; }
+.stock-tags { margin-bottom:6px; }
+.stock-users { font-size:12px; color:#666; margin-bottom:8px; }
+.post-item { background:#fff; border-left:3px solid #e94560; padding:10px 12px; margin:8px 0; border-radius:0 6px 6px 0; }
+.post-meta { display:flex; gap:10px; align-items:center; font-size:12px; color:#888; margin-bottom:4px; flex-wrap:wrap; }
+.post-user { font-weight:bold; color:#333; }
+.post-opinion { padding:1px 6px; border-radius:3px; font-size:11px; }
+.op-买入\/加仓 { background:#ffe0e0; color:#d32f2f; }
+.op-卖出\/减仓 { background:#e0f0ff; color:#1565c0; }
+.op-看多 { background:#fff3e0; color:#e65100; }
+.op-看空 { background:#f3e5f5; color:#7b1fa2; }
+.op-持有 { background:#e8f5e9; color:#2e7d32; }
+.op-中性\/讨论 { background:#f5f5f5; color:#757575; }
+.op-买卖混合 { background:#fce4ec; color:#c2185b; }
+.op-偏多 { background:#fff3e0; color:#e65100; }
+.op-偏空 { background:#f3e5f5; color:#7b1fa2; }
+.op-多空分歧 { background:#fff8e1; color:#f57f17; }
+.strength { font-size:11px; padding:2px 8px; border-radius:3px; margin-left:auto; font-weight:600; }
+.bull-strength { background:#ffebee; color:#c62828; }
+.bear-strength { background:#e8eaf6; color:#283593; }
+.neutral-strength { background:#f5f5f5; color:#757575; }
+.post-text { font-size:13px; color:#444; }
+.post-link { color:#1565c0; text-decoration:none; }
+.post-link:hover { text-decoration:underline; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th, td { padding:10px 8px; text-align:left; border-bottom:1px solid #eee; }
+th { background:#f8f9fa; font-weight:600; color:#555; }
+tr:hover { background:#f8f9fa; }
+.sector-title { font-size:15px; color:#1a1a2e; margin:20px 0 10px; padding-left:10px; border-left:3px solid #0f3460; }
+.user-block { margin-bottom:20px; }
+.user-header { display:flex; gap:12px; align-items:center; margin-bottom:8px; flex-wrap:wrap; }
+.user-name { font-size:15px; font-weight:bold; color:#1a1a2e; }
+.user-count { font-size:12px; color:#888; }
+.user-stocks { font-size:12px; color:#666; }
+.conclusion { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+.conclusion-box { padding:15px; border-radius:8px; }
+.conclusion-bull { background:#fff5f5; border:1px solid #ffcdd2; }
+.conclusion-bear { background:#f5f5ff; border:1px solid #c5cae9; }
+.conclusion-box h3 { font-size:14px; margin-bottom:8px; }
+.conclusion-bull h3 { color:#c62828; }
+.conclusion-bear h3 { color:#283593; }
+.conclusion-box ul { padding-left:18px; font-size:13px; }
+.conclusion-box li { margin:4px 0; }
+.footer { text-align:center; padding:20px; color:#999; font-size:12px; }
+.nav-tabs { display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap; }
+.nav-tab { padding:8px 16px; background:#fff; border-radius:6px; text-decoration:none; color:#555; font-size:13px; box-shadow:0 1px 3px rgba(0,0,0,0.1); }
+.nav-tab.active { background:#e94560; color:#fff; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>雪球大V多空观点与交易动作总结</h1>
+    <div class="meta">更新时间：2026-10-05 08:00:06 ｜ 数据范围：近2天 ｜ 关注43人 ｜ 活跃17人 ｜ 总发言87条 ｜ 股票相关9条（已过滤78条无关发言）</div>
+</div>
+
+<div class="stats">
+    <div class="stat-card"><div class="num">12</div><div class="label">提及股票</div></div>
+    <div class="stat-card"><div class="num">4</div><div class="label">看多标的</div></div>
+    <div class="stat-card"><div class="num">1</div><div class="label">看空标的</div></div>
+    <div class="stat-card"><div class="num">1</div><div class="label">明确操作</div></div>
+</div>
+
+<div class="section">
+    <h2>一、核心结论</h2>
+    <div class="conclusion">
+        <div class="conclusion-box conclusion-bull">
+            <h3>主要看多 / 买入标的</h3>
+            <ul>
+                <li><b>TCL科技</b>（AI科技）-- 1人提及，买入0次，看多0次</li><li><b>成都银行</b>（金融地产）-- 1人提及，买入0次，看多2次</li><li><b>宁波银行</b>（金融地产）-- 1人提及，买入0次，看多1次</li><li><b>招商银行</b>（金融地产）-- 1人提及，买入0次，看多1次</li>
+            </ul>
+        </div>
+        <div class="conclusion-box conclusion-bear">
+            <h3>主要看空 / 卖出标的</h3>
+            <ul>
+                <li><b>紫金矿业</b>（有色资源）-- 卖出0次，看空1次</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>二、明确交易、加仓与仓位变化</h2>
+    <table><tr><th>时间</th><th>大V</th><th>标的</th><th>操作</th><th>详情</th><th>原文</th></tr>
+        <tr>
+            <td>2026-10-04 13:42</td>
+            <td>伊夫圣洛朗</td>
+            <td>TCL科技</td>
+            <td><span class="tag tag-sell">出货</span></td>
+            <td>产线，低效面板产能永久退出面板供给，行业出货量进一步收缩，有望支撑面板走出涨价长周期。</td>
+            <td><a href="https://xueqiu.com/1066188300/411284951" target="_blank">原文</a></td>
+        </tr></table>
+</div>
+
+<div class="section">
+    <h2>三、主要看多与推荐标的</h2>
+    <div class="stock-grid">
+        
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">TCL科技</span>
+                <span class="stock-code">SZ000100</span>
+                <span class="stock-sector">AI科技</span>
+                <span class="strength bull-strength">看多强度 +5</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-sell">卖出1</span><span class="tag tag-bear">看空1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：伊夫圣洛朗</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">伊夫圣洛朗</span>
+                        <span class="post-time">2026-10-04 22:24</span>
+                        <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                        <a href="https://xueqiu.com/1066188300/411297651" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">$TCL科技(SZ000100)$ TCL科技过去五年经营现金流净额均值300亿，其中22、23、24年正好是面板行业深度低迷期。近两年面板新增供给基本停止，行业供需格局正在从宽松逐步转向紧平衡。未来五年，TCL科技经营现金流中枢有望抬升至350亿以上（2025年440亿，2026中报176亿）。回看资本开支，过去五年平均资本开支高达282亿，峰值2022年一度达到407亿。资本开支的拐点从2025年开始出现，2025年资本开支下降至162亿。2026中报资本开支约100亿，全年预估180亿。近两年资本开支，已经显著低于过去五年均值。随着最后一条T8产线主体建设收尾，2027年后资本开支有望进</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">伊夫圣洛朗</span>
+                        <span class="post-time">2026-10-04 13:42</span>
+                        <span class="post-opinion op-卖出/减仓">卖出/减仓</span>
+                        <a href="https://xueqiu.com/1066188300/411284951" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">$TCL科技(SZ000100)$ TCL科技：低估值+业绩弹性+远期产业预期三重逻辑TCL科技当前具备低估值、业绩高成长、长期产业预期三重看点。1. 估值处于低位：按2026年80亿归母净利润测算，动态PE约13倍；2027年前瞻归母净利润测算，PE不足10倍，估值安全垫充足。2. 业绩具备明确成长弹性：2026年归母净利润有望同比大幅增长；2027年，叠加T9产线全额权益并入、老产线折旧到期带来的费用下降、光伏业务减亏增厚利润，归母净利润有望继续高增。3. 面板供需+玻璃基封装的远期预期2027年友达7.5代产线出售给台积电，面板行业供给会进一步收缩，支撑面板价格。长期看，玻璃基封装如果顺</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">成都银行</span>
+                <span class="stock-code">SH601838</span>
+                <span class="stock-sector">金融地产</span>
+                <span class="strength bull-strength">看多强度 +2</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多2</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：愤怒的龙卷风</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">愤怒的龙卷风</span>
+                        <span class="post-time">2026-10-04 17:27</span>
+                        <span class="post-opinion op-偏多">偏多</span>
+                        <a href="https://xueqiu.com/5798578993/411290396" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">$成都银行(SH601838)$ 银行股既不是&quot;无脑便宜&quot;，也不是&quot;长期不涨&quot;。它需要穿透数字看本质——资产质量是否真实、盈利能力是否可持续、管理层是否审慎。九道关是一套框架，而非一份现成答案。框架用于辅助判断，不能替代决策。真正优质的银行，是在经济下行时少受损、在景气回升时充分受益的一类。找到它、持有它，时间会给出回报——前提是先完成验证作业。$宁波银行(SZ002142)$ $招商银行(SH600036)$</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">愤怒的龙卷风</span>
+                        <span class="post-time">2026-10-03 17:21</span>
+                        <span class="post-opinion op-看多">看多</span>
+                        <a href="https://xueqiu.com/5798578993/411263391" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">$成都银行(SH601838)$ 低估值、高股息与可持续增长：25家上市银行投资价值全景报告——基于2025年年报与2026年半年报的25家上市银行全景比较分析</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">宁波银行</span>
+                <span class="stock-code">SZ002142</span>
+                <span class="stock-sector">金融地产</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：愤怒的龙卷风</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">愤怒的龙卷风</span>
+                        <span class="post-time">2026-10-04 17:27</span>
+                        <span class="post-opinion op-偏多">偏多</span>
+                        <a href="https://xueqiu.com/5798578993/411290396" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">$成都银行(SH601838)$ 银行股既不是&quot;无脑便宜&quot;，也不是&quot;长期不涨&quot;。它需要穿透数字看本质——资产质量是否真实、盈利能力是否可持续、管理层是否审慎。九道关是一套框架，而非一份现成答案。框架用于辅助判断，不能替代决策。真正优质的银行，是在经济下行时少受损、在景气回升时充分受益的一类。找到它、持有它，时间会给出回报——前提是先完成验证作业。$宁波银行(SZ002142)$ $招商银行(SH600036)$</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">招商银行</span>
+                <span class="stock-code">SH600036</span>
+                <span class="stock-sector">金融地产</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：愤怒的龙卷风</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">愤怒的龙卷风</span>
+                        <span class="post-time">2026-10-04 17:27</span>
+                        <span class="post-opinion op-偏多">偏多</span>
+                        <a href="https://xueqiu.com/5798578993/411290396" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">$成都银行(SH601838)$ 银行股既不是&quot;无脑便宜&quot;，也不是&quot;长期不涨&quot;。它需要穿透数字看本质——资产质量是否真实、盈利能力是否可持续、管理层是否审慎。九道关是一套框架，而非一份现成答案。框架用于辅助判断，不能替代决策。真正优质的银行，是在经济下行时少受损、在景气回升时充分受益的一类。找到它、持有它，时间会给出回报——前提是先完成验证作业。$宁波银行(SZ002142)$ $招商银行(SH600036)$</div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>四、主要看空、回避与谨慎标的</h2>
+    <div class="stock-grid">
+        
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">紫金矿业</span>
+                <span class="stock-code">SH601899</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bear-strength">看空强度 -1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bear">看空1</span><span class="tag tag-user">2人</span></div>
+            <div class="stock-users">提及：愤怒的龙卷风、斯托伯的天空</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">斯托伯的天空</span>
+                        <span class="post-time">2026-10-04 11:08</span>
+                        <span class="post-opinion op-看空">看空</span>
+                        <a href="https://xueqiu.com/9493911686/411280891" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">美国三艘航母战斗群要再次聚集阿拉伯海，另外有两只两栖登陆部队也待命……老美几大军工企业在白宫的压力下持续不间断的在生产弹药，24小时连轴转。中期选举结束后的部署会比开战时规模更大。……沙特在英法的支持下计划大规模入侵也门，据说有10万人参战。以色列随时都可以参战，激动的不行……这不就是新一次中东全面战争的节奏吗……这就是我说的其实大家关注的危机点可能错了，最大的风险不在于美债，一直都是中东。$中国海洋石油(00883)$ $中国石油(SH601857)$ $紫金矿业(SH601899)$</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">愤怒的龙卷风</span>
+                        <span class="post-time">2026-10-04 22:14</span>
+                        <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                        <a href="https://xueqiu.com/5798578993/411297416" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@低买高卖静待花开: 分析过无数次了，自己去看，没有发在雪球而已。$中金黄金(SH600489)$ $紫金矿业(SH601899)$ $藏格矿业(SZ000408)$//@低买高卖静待花开:回复@愤怒的龙卷风:谢谢风大！能不能分析一下大东沟</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">愤怒的龙卷风</span>
+                        <span class="post-time">2026-10-03 17:45</span>
+                        <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                        <a href="https://xueqiu.com/5798578993/411263908" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">$紫金矿业(SH601899)$ 紫金矿业凭什么杀进全球矿业前三——深度拆解&quot;矿石流五环归一&quot;的低成本打法$藏格矿业(SZ000408)$ $山东黄金(SH600547)$</div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>五、按赛道分类</h2>
+    <h3 class="sector-title">AI科技（1只）</h3><div class="stock-grid">
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">TCL科技</span>
+                <span class="stock-code">SZ000100</span>
+                <span class="stock-sector">AI科技</span>
+                <span class="strength bull-strength">看多强度 +5</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-sell">卖出1</span><span class="tag tag-bear">看空1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：伊夫圣洛朗</div>
+            
+        </div></div><h3 class="sector-title">有色资源（4只）</h3><div class="stock-grid">
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">中金黄金</span>
+                <span class="stock-code">SH600489</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：愤怒的龙卷风</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">藏格矿业</span>
+                <span class="stock-code">SZ000408</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：愤怒的龙卷风</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">山东黄金</span>
+                <span class="stock-code">SH600547</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：愤怒的龙卷风</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">紫金矿业</span>
+                <span class="stock-code">SH601899</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bear-strength">看空强度 -1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bear">看空1</span><span class="tag tag-user">2人</span></div>
+            <div class="stock-users">提及：愤怒的龙卷风、斯托伯的天空</div>
+            
+        </div></div><h3 class="sector-title">能源煤炭（2只）</h3><div class="stock-grid">
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">中国海洋石油</span>
+                <span class="stock-code">00883</span>
+                <span class="stock-sector">能源煤炭</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-bear">看空1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">中国石油</span>
+                <span class="stock-code">SH601857</span>
+                <span class="stock-sector">能源煤炭</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-bear">看空1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+        </div></div><h3 class="sector-title">金融地产（3只）</h3><div class="stock-grid">
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">成都银行</span>
+                <span class="stock-code">SH601838</span>
+                <span class="stock-sector">金融地产</span>
+                <span class="strength bull-strength">看多强度 +2</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多2</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：愤怒的龙卷风</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">宁波银行</span>
+                <span class="stock-code">SZ002142</span>
+                <span class="stock-sector">金融地产</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：愤怒的龙卷风</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">招商银行</span>
+                <span class="stock-code">SH600036</span>
+                <span class="stock-sector">金融地产</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：愤怒的龙卷风</div>
+            
+        </div></div><h3 class="sector-title">其他（2只）</h3><div class="stock-grid">
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">XD海螺水</span>
+                <span class="stock-code">SH600585</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：雪月霜</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">海螺环保</span>
+                <span class="stock-code">00587</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：雪月霜</div>
+            
+        </div></div>
+</div>
+
+<div class="section">
+    <h2>六、大V股票相关发言明细</h2>
+    
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">愤怒的龙卷风</span>
+                <span class="user-count">4条股票相关发言</span>
+                <span class="user-stocks">涉及：成都银行、宁波银行、招商银行、山东黄金、藏格矿业、紫金矿业、中金黄金</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-04 22:14</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/5798578993/411297416" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">回复@低买高卖静待花开: 分析过无数次了，自己去看，没有发在雪球而已。$中金黄金(SH600489)$ $紫金矿业(SH601899)$ $藏格矿业(SZ000408)$//@低买高卖静待花开:回复@愤怒的龙卷风:谢谢风大！能不能分析一下大东沟</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-04 17:27</span>
+                    <span class="post-opinion op-偏多">偏多</span>
+                    <a href="https://xueqiu.com/5798578993/411290396" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$成都银行(SH601838)$ 银行股既不是&quot;无脑便宜&quot;，也不是&quot;长期不涨&quot;。它需要穿透数字看本质——资产质量是否真实、盈利能力是否可持续、管理层是否审慎。九道关是一套框架，而非一份现成答案。框架用于辅助判断，不能替代决策。真正优质的银行，是在经济下行时少受损、在景气回升时充分受益的一类。找到它、持有它，时间会给出回报——前提是先完成验证作业。$宁波银行(SZ002142)$ $招商银行(SH600036)$</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-03 17:45</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/5798578993/411263908" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$紫金矿业(SH601899)$ 紫金矿业凭什么杀进全球矿业前三——深度拆解&quot;矿石流五环归一&quot;的低成本打法$藏格矿业(SZ000408)$ $山东黄金(SH600547)$</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-03 17:21</span>
+                    <span class="post-opinion op-看多">看多</span>
+                    <a href="https://xueqiu.com/5798578993/411263391" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$成都银行(SH601838)$ 低估值、高股息与可持续增长：25家上市银行投资价值全景报告——基于2025年年报与2026年半年报的25家上市银行全景比较分析</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">斯托伯的天空</span>
+                <span class="user-count">2条股票相关发言</span>
+                <span class="user-stocks">涉及：中国海洋石油、中国石油、紫金矿业</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-04 21:56</span>
+                    <span class="post-opinion op-看多">看多</span>
+                    <a href="https://xueqiu.com/9493911686/411296985" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">回复@退休之后的生活: 原油高位可以支持美元，我以前说过的，就是能源争霸战那个文章。美国作为全球最大油气出口国，美元和原油的关系变了，原油变成美国的权益。但是得维持在一定程度，比如八十多九十多，一旦涨太多，反过来就吞噬美元信用，因为白宫无法控制油价，会带来恐慌。石油美元的基础在于美国的控制能力，包括军事和金融，这只李达关系美国国家信用。但是这些都是供需没有完全失衡下的状态，如果长期原油供应不足，特别是美国的战略原油储备开始不够用，那么更严重的全球性能源危机就到来了。换句话说，现在能源供应没有短缺/恐慌到能让老美崩掉的程度，这个价格依然是利好美元的。这个逻辑比本身加息的逻辑要通透得多，是量的问题。其实这场战争美伊都是比较克制的，没有持续大规模轰炸能源设施，不然市场会比较绝望。目前世界经济的韧性也远超过过去人们的预期，这也说明油价这个位置其实是OK的。个人观点，仅供参考$中国海洋石油(0088</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-04 11:08</span>
+                    <span class="post-opinion op-看空">看空</span>
+                    <a href="https://xueqiu.com/9493911686/411280891" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">美国三艘航母战斗群要再次聚集阿拉伯海，另外有两只两栖登陆部队也待命……老美几大军工企业在白宫的压力下持续不间断的在生产弹药，24小时连轴转。中期选举结束后的部署会比开战时规模更大。……沙特在英法的支持下计划大规模入侵也门，据说有10万人参战。以色列随时都可以参战，激动的不行……这不就是新一次中东全面战争的节奏吗……这就是我说的其实大家关注的危机点可能错了，最大的风险不在于美债，一直都是中东。$中国海洋石油(00883)$ $中国石油(SH601857)$ $紫金矿业(SH601899)$</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">伊夫圣洛朗</span>
+                <span class="user-count">2条股票相关发言</span>
+                <span class="user-stocks">涉及：TCL科技</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-04 22:24</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/1066188300/411297651" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$TCL科技(SZ000100)$ TCL科技过去五年经营现金流净额均值300亿，其中22、23、24年正好是面板行业深度低迷期。近两年面板新增供给基本停止，行业供需格局正在从宽松逐步转向紧平衡。未来五年，TCL科技经营现金流中枢有望抬升至350亿以上（2025年440亿，2026中报176亿）。回看资本开支，过去五年平均资本开支高达282亿，峰值2022年一度达到407亿。资本开支的拐点从2025年开始出现，2025年资本开支下降至162亿。2026中报资本开支约100亿，全年预估180亿。近两年资本开支，已经显著低于过去五年均值。随着最后一条T8产线主体建设收尾，2027年后资本开支有望进一步压缩至100亿以内。未来五年，公司年自由现金流有望稳定在200亿以上的水平。大量富余自由现金流，一方面使得股息支付率具备提升空间。另一方面可以用于偿还有息负债，推动财务费用下行，进一步增厚净利润。</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-04 13:42</span>
+                    <span class="post-opinion op-卖出/减仓">卖出/减仓</span>
+                    <a href="https://xueqiu.com/1066188300/411284951" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$TCL科技(SZ000100)$ TCL科技：低估值+业绩弹性+远期产业预期三重逻辑TCL科技当前具备低估值、业绩高成长、长期产业预期三重看点。1. 估值处于低位：按2026年80亿归母净利润测算，动态PE约13倍；2027年前瞻归母净利润测算，PE不足10倍，估值安全垫充足。2. 业绩具备明确成长弹性：2026年归母净利润有望同比大幅增长；2027年，叠加T9产线全额权益并入、老产线折旧到期带来的费用下降、光伏业务减亏增厚利润，归母净利润有望继续高增。3. 面板供需+玻璃基封装的远期预期2027年友达7.5代产线出售给台积电，面板行业供给会进一步收缩，支撑面板价格。长期看，玻璃基封装如果顺利落地量产，会打开第二增长曲线，催化股价的上涨。同时，存量低世代中小尺寸LCD产线有机会改造为玻璃芯载板产线，低效面板产能永久退出面板供给，行业出货量进一步收缩，有望支撑面板走出涨价长周期。</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">雪月霜</span>
+                <span class="user-count">1条股票相关发言</span>
+                <span class="user-stocks">涉及：XD海螺水、海螺环保</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-04 02:47</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/1505944393/411274188" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$XD海螺水(SH600585)$ $海螺环保(00587)$ 这个海螺水泥不是因为海螺环保附属公司收购，海螺水泥作为股东例行公告吗？怎么成了海螺水泥收购集团资产，某些人不认识字吗</div>
+            </div></div>
+</div>
+
+<div class="footer">
+    本报告由程序自动生成，数据来源于雪球网公开信息，仅供参考，不构成投资建议。<br>
+    生成时间：2026-10-05 08:00:06
+</div>
+</div>
+</body>
+</html>
