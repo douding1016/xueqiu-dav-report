@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雪球大V多空观点与交易动作总结 - 2026-09-27 11:00:06</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, "Microsoft YaHei", sans-serif; background:#f5f7fa; color:#333; line-height:1.6; }
+.container { max-width:1200px; margin:0 auto; padding:20px; }
+.header { background:linear-gradient(135deg,#1a1a2e,#16213e); color:#fff; padding:30px; border-radius:12px; margin-bottom:20px; }
+.header h1 { font-size:24px; margin-bottom:8px; }
+.header .meta { font-size:14px; opacity:0.85; }
+.stats { display:grid; grid-template-columns:repeat(4,1fr); gap:15px; margin-bottom:25px; }
+.stat-card { background:#fff; padding:20px; border-radius:10px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.stat-card .num { font-size:32px; font-weight:bold; color:#1a1a2e; }
+.stat-card .label { font-size:13px; color:#888; margin-top:4px; }
+.section { background:#fff; border-radius:12px; padding:25px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.section h2 { font-size:18px; margin-bottom:15px; padding-bottom:10px; border-bottom:2px solid #eee; color:#1a1a2e; }
+.section h2::before { content:""; display:inline-block; width:4px; height:18px; background:#e94560; margin-right:10px; vertical-align:middle; border-radius:2px; }
+.tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:12px; margin-right:5px; font-weight:500; }
+.tag-buy { background:#ffe0e0; color:#d32f2f; }
+.tag-sell { background:#e0f0ff; color:#1565c0; }
+.tag-bull { background:#fff3e0; color:#e65100; }
+.tag-bear { background:#f3e5f5; color:#7b1fa2; }
+.tag-user { background:#e8f5e9; color:#2e7d32; }
+.stock-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(350px,1fr)); gap:15px; }
+.stock-card { border:1px solid #eee; border-radius:8px; padding:15px; background:#fafbfc; }
+.stock-header { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+.stock-name { font-size:16px; font-weight:bold; color:#1a1a2e; }
+.stock-code { font-size:12px; color:#999; }
+.stock-sector { font-size:11px; background:#e3f2fd; color:#1565c0; padding:1px 6px; border-radius:3px; }
+.stock-tags { margin-bottom:6px; }
+.stock-users { font-size:12px; color:#666; margin-bottom:8px; }
+.post-item { background:#fff; border-left:3px solid #e94560; padding:10px 12px; margin:8px 0; border-radius:0 6px 6px 0; }
+.post-meta { display:flex; gap:10px; align-items:center; font-size:12px; color:#888; margin-bottom:4px; flex-wrap:wrap; }
+.post-user { font-weight:bold; color:#333; }
+.post-opinion { padding:1px 6px; border-radius:3px; font-size:11px; }
+.op-买入\/加仓 { background:#ffe0e0; color:#d32f2f; }
+.op-卖出\/减仓 { background:#e0f0ff; color:#1565c0; }
+.op-看多 { background:#fff3e0; color:#e65100; }
+.op-看空 { background:#f3e5f5; color:#7b1fa2; }
+.op-持有 { background:#e8f5e9; color:#2e7d32; }
+.op-中性\/讨论 { background:#f5f5f5; color:#757575; }
+.op-买卖混合 { background:#fce4ec; color:#c2185b; }
+.op-偏多 { background:#fff3e0; color:#e65100; }
+.op-偏空 { background:#f3e5f5; color:#7b1fa2; }
+.op-多空分歧 { background:#fff8e1; color:#f57f17; }
+.strength { font-size:11px; padding:2px 8px; border-radius:3px; margin-left:auto; font-weight:600; }
+.bull-strength { background:#ffebee; color:#c62828; }
+.bear-strength { background:#e8eaf6; color:#283593; }
+.neutral-strength { background:#f5f5f5; color:#757575; }
+.post-text { font-size:13px; color:#444; }
+.post-link { color:#1565c0; text-decoration:none; }
+.post-link:hover { text-decoration:underline; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th, td { padding:10px 8px; text-align:left; border-bottom:1px solid #eee; }
+th { background:#f8f9fa; font-weight:600; color:#555; }
+tr:hover { background:#f8f9fa; }
+.sector-title { font-size:15px; color:#1a1a2e; margin:20px 0 10px; padding-left:10px; border-left:3px solid #0f3460; }
+.user-block { margin-bottom:20px; }
+.user-header { display:flex; gap:12px; align-items:center; margin-bottom:8px; flex-wrap:wrap; }
+.user-name { font-size:15px; font-weight:bold; color:#1a1a2e; }
+.user-count { font-size:12px; color:#888; }
+.user-stocks { font-size:12px; color:#666; }
+.conclusion { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+.conclusion-box { padding:15px; border-radius:8px; }
+.conclusion-bull { background:#fff5f5; border:1px solid #ffcdd2; }
+.conclusion-bear { background:#f5f5ff; border:1px solid #c5cae9; }
+.conclusion-box h3 { font-size:14px; margin-bottom:8px; }
+.conclusion-bull h3 { color:#c62828; }
+.conclusion-bear h3 { color:#283593; }
+.conclusion-box ul { padding-left:18px; font-size:13px; }
+.conclusion-box li { margin:4px 0; }
+.footer { text-align:center; padding:20px; color:#999; font-size:12px; }
+.nav-tabs { display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap; }
+.nav-tab { padding:8px 16px; background:#fff; border-radius:6px; text-decoration:none; color:#555; font-size:13px; box-shadow:0 1px 3px rgba(0,0,0,0.1); }
+.nav-tab.active { background:#e94560; color:#fff; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>雪球大V多空观点与交易动作总结</h1>
+    <div class="meta">更新时间：2026-09-27 11:00:06 ｜ 数据范围：近2天 ｜ 关注43人 ｜ 活跃20人 ｜ 总发言125条 ｜ 股票相关13条（已过滤112条无关发言）</div>
+</div>
+
+<div class="stats">
+    <div class="stat-card"><div class="num">14</div><div class="label">提及股票</div></div>
+    <div class="stat-card"><div class="num">7</div><div class="label">看多标的</div></div>
+    <div class="stat-card"><div class="num">0</div><div class="label">看空标的</div></div>
+    <div class="stat-card"><div class="num">1</div><div class="label">明确操作</div></div>
+</div>
+
+<div class="section">
+    <h2>一、核心结论</h2>
+    <div class="conclusion">
+        <div class="conclusion-box conclusion-bull">
+            <h3>主要看多 / 买入标的</h3>
+            <ul>
+                <li><b>紫金矿业</b>（有色资源）-- 3人提及，买入0次，看多2次</li><li><b>盐湖股份</b>（有色资源）-- 2人提及，买入0次，看多1次</li><li><b>藏格矿业</b>（有色资源）-- 1人提及，买入0次，看多1次</li><li><b>西部矿业</b>（有色资源）-- 1人提及，买入0次，看多1次</li><li><b>海康威视</b>（其他）-- 1人提及，买入0次，看多1次</li><li><b>万科A</b>（金融地产）-- 1人提及，买入1次，看多1次</li><li><b>房地产</b>（金融地产）-- 1人提及，买入1次，看多1次</li>
+            </ul>
+        </div>
+        <div class="conclusion-box conclusion-bear">
+            <h3>主要看空 / 卖出标的</h3>
+            <ul>
+                <li>暂无明确看空标的</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>二、明确交易、加仓与仓位变化</h2>
+    <table><tr><th>时间</th><th>大V</th><th>标的</th><th>操作</th><th>详情</th><th>原文</th></tr>
+        <tr>
+            <td>2026-09-26 19:09</td>
+            <td>斯托伯的天空</td>
+            <td>万科A、房地产</td>
+            <td><span class="tag tag-sell">卖掉</span></td>
+            <td>。大家都明白，这种产品真修出来直接就很难卖掉了。但是也有极少数开发商是这么干的……刚才就路过一个区域</td>
+            <td><a href="https://xueqiu.com/9493911686/410639344" target="_blank">原文</a></td>
+        </tr></table>
+</div>
+
+<div class="section">
+    <h2>三、主要看多与推荐标的</h2>
+    <div class="stock-grid">
+        
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">紫金矿业</span>
+                <span class="stock-code">SH601899</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bull-strength">看多强度 +3</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多2</span><span class="tag tag-user">3人</span></div>
+            <div class="stock-users">提及：愤怒的龙卷风、斯托伯的天空、金哥777</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">斯托伯的天空</span>
+                        <span class="post-time">2026-09-27 10:05</span>
+                        <span class="post-opinion op-看多">看多</span>
+                        <a href="https://xueqiu.com/9493911686/410654835" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">紫金矿业26年碳酸锂目标产能12万吨，上半年实际产出4.4万吨。紫金想冲肯定可以冲到12万，但我预计下半年不会达成目标，因为现在锂矿整体景气度已经下降很多的，就赚个波动钱。27年规划27-32万吨，会对市场造成冲击了，但也只能看情况了。紫金一直在根据锂矿价格变更产能计划，它自己其实也没大有数。紫金投锂矿的时机并不好，现在这块对它而言有些鸡肋了。锂是很难维持在一个理想的价位的，特别是在电动车市场越来越趋于饱和后。宁德在遭遇理想事件后，也会坚定直接开矿的决心。未来格局还真不好说。$紫金矿业(SH601899)$</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">愤怒的龙卷风</span>
+                        <span class="post-time">2026-09-27 09:27</span>
+                        <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                        <a href="https://xueqiu.com/5798578993/410653442" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@易冷观尘: 不是，你搞错了吧，并不是50％。如果试图纠正我，你应该比我更精通，然而你比我知道的更少。57.35％+30.78％×26.18％=65.41％，所以穿透是65.41％。$紫金矿业(SH601899)$查看图片//@易冷观尘:回复@愤怒的龙卷风:[已修改]巨龙58.16%的持股比例就是穿透后的权益。因为紫金原来持股比例是50.1%，加上藏格权益后的穿透才是58.16%</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">愤怒的龙卷风</span>
+                        <span class="post-time">2026-09-26 19:07</span>
+                        <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                        <a href="https://xueqiu.com/5798578993/410639301" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">$紫金矿业(SH601899)$ 紫金矿业复盘。</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">金哥777</span>
+                        <span class="post-time">2026-09-27 10:03</span>
+                        <span class="post-opinion op-看多">看多</span>
+                        <a href="https://xueqiu.com/1674052027/410654751" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@长期投资者的未来: 这问题以前我说过，2026年产能如果能完成30.6万吨铜，如果上次那机构去巨龙铜矿调研产能数据是真实的，7到8月两个月铜产能是5.24万吨，上半年铜产能是13.6万吨，那最后四个月铜产能是11.76万吨，由于产能爬坡应该是产能越来越高的，这样最后一个季度差不多每个月3万吨左右产能了。。。产能爬坡一年我预判明年巨龙铜矿二期每天处理矿山量应该会比今年最后四个月要高的，明年巨龙铜矿二期就有可能达到20万吨铜产能，去年一期产能是19.38万吨，明年产能就有可能增加到39万吨左右。。。藏格矿业三年计划，2028年铜产能是可能增加到42万吨左右的，因为品位率是无法控制的，有可能多</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">金哥777</span>
+                        <span class="post-time">2026-09-25 19:39</span>
+                        <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                        <a href="https://xueqiu.com/1674052027/410597806" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">非常不错的图，财富密码，祝中秋快乐，万事如意，心想事成，财源滚滚。。。$紫金矿业(SH601899)$ $藏格矿业(SZ000408)$</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">盐湖股份</span>
+                <span class="stock-code">SZ000792</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bull-strength">看多强度 +2</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">2人</span></div>
+            <div class="stock-users">提及：愤怒的龙卷风、金哥777</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">愤怒的龙卷风</span>
+                        <span class="post-time">2026-09-27 09:53</span>
+                        <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                        <a href="https://xueqiu.com/5798578993/410654383" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">$盐湖股份(SZ000792)$ 盐湖股份估计碳酸锂跌回10万股价16-18就可以买了。</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">金哥777</span>
+                        <span class="post-time">2026-09-27 10:14</span>
+                        <span class="post-opinion op-看多">看多</span>
+                        <a href="https://xueqiu.com/1674052027/410655187" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">目前性价比也很高了，手里那么多现金，又没有有息负债，把分红率提高到百分之50➕，还有权益产能增量预期，这公司比市场百分之95➕的公司便宜，有钾肥保底，锂成本又最低，目前钾肥锂价格净利润100亿➕还是有的$盐湖股份(SZ000792)$ 。。。</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">藏格矿业</span>
+                <span class="stock-code">SZ000408</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bull-strength">看多强度 +2</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：金哥777</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">金哥777</span>
+                        <span class="post-time">2026-09-27 10:03</span>
+                        <span class="post-opinion op-看多">看多</span>
+                        <a href="https://xueqiu.com/1674052027/410654751" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@长期投资者的未来: 这问题以前我说过，2026年产能如果能完成30.6万吨铜，如果上次那机构去巨龙铜矿调研产能数据是真实的，7到8月两个月铜产能是5.24万吨，上半年铜产能是13.6万吨，那最后四个月铜产能是11.76万吨，由于产能爬坡应该是产能越来越高的，这样最后一个季度差不多每个月3万吨左右产能了。。。产能爬坡一年我预判明年巨龙铜矿二期每天处理矿山量应该会比今年最后四个月要高的，明年巨龙铜矿二期就有可能达到20万吨铜产能，去年一期产能是19.38万吨，明年产能就有可能增加到39万吨左右。。。藏格矿业三年计划，2028年铜产能是可能增加到42万吨左右的，因为品位率是无法控制的，有可能多</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">金哥777</span>
+                        <span class="post-time">2026-09-25 19:39</span>
+                        <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                        <a href="https://xueqiu.com/1674052027/410597806" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">非常不错的图，财富密码，祝中秋快乐，万事如意，心想事成，财源滚滚。。。$紫金矿业(SH601899)$ $藏格矿业(SZ000408)$</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">西部矿业</span>
+                <span class="stock-code">SH601168</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bull-strength">看多强度 +2</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：金哥777</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">金哥777</span>
+                        <span class="post-time">2026-09-27 10:03</span>
+                        <span class="post-opinion op-看多">看多</span>
+                        <a href="https://xueqiu.com/1674052027/410654751" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@长期投资者的未来: 这问题以前我说过，2026年产能如果能完成30.6万吨铜，如果上次那机构去巨龙铜矿调研产能数据是真实的，7到8月两个月铜产能是5.24万吨，上半年铜产能是13.6万吨，那最后四个月铜产能是11.76万吨，由于产能爬坡应该是产能越来越高的，这样最后一个季度差不多每个月3万吨左右产能了。。。产能爬坡一年我预判明年巨龙铜矿二期每天处理矿山量应该会比今年最后四个月要高的，明年巨龙铜矿二期就有可能达到20万吨铜产能，去年一期产能是19.38万吨，明年产能就有可能增加到39万吨左右。。。藏格矿业三年计划，2028年铜产能是可能增加到42万吨左右的，因为品位率是无法控制的，有可能多</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">海康威视</span>
+                <span class="stock-code">SZ002415</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">斯托伯的天空</span>
+                        <span class="post-time">2026-09-27 09:47</span>
+                        <span class="post-opinion op-看多">看多</span>
+                        <a href="https://xueqiu.com/9493911686/410654184" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@靠谱的yaoyuan: 从历史估值角度，它这位置确实比较低了。但如果只是当作一家稍微有点技术含量的制造业企业，目前的估值只能说合理。$海康威视(SZ002415)$未来估值能否抬升取决于它是否有成长性或者分红是否持续增加。//@靠谱的yaoyuan:回复@斯托伯的天空:低位发分析文章，良心大V。海康威视等了4年始终下不了手，这次感觉有点苗头了。</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">万科A</span>
+                <span class="stock-code">SZ000002</span>
+                <span class="stock-sector">金融地产</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">斯托伯的天空</span>
+                        <span class="post-time">2026-09-26 19:09</span>
+                        <span class="post-opinion op-买入/加仓">买入/加仓</span>
+                        <a href="https://xueqiu.com/9493911686/410639344" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">还有多少人记得当年的街区制改革？$万科A(SZ000002)$ $房地产(BK1080)$那一阵把开发商和物业公司吓坏了，也把一大帮业主吓坏了。不过后来基本没有得到执行，大家还是按照原有的小区模式修，地方也不干预，没有强制要求。大家都明白，这种产品真修出来直接就很难卖掉了。但是也有极少数开发商是这么干的……刚才就路过一个区域，都是单独的楼栋，道路开放，楼下全是底商，安全性很低，环境特别吵，和香港五十年前的老楼很像。基本都是用来出租。所以，不管任何正册，一定要……</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">房地产</span>
+                <span class="stock-code">BK1080</span>
+                <span class="stock-sector">金融地产</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">斯托伯的天空</span>
+                        <span class="post-time">2026-09-26 19:09</span>
+                        <span class="post-opinion op-买入/加仓">买入/加仓</span>
+                        <a href="https://xueqiu.com/9493911686/410639344" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">还有多少人记得当年的街区制改革？$万科A(SZ000002)$ $房地产(BK1080)$那一阵把开发商和物业公司吓坏了，也把一大帮业主吓坏了。不过后来基本没有得到执行，大家还是按照原有的小区模式修，地方也不干预，没有强制要求。大家都明白，这种产品真修出来直接就很难卖掉了。但是也有极少数开发商是这么干的……刚才就路过一个区域，都是单独的楼栋，道路开放，楼下全是底商，安全性很低，环境特别吵，和香港五十年前的老楼很像。基本都是用来出租。所以，不管任何正册，一定要……</div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>四、主要看空、回避与谨慎标的</h2>
+    <div class="stock-grid">
+        <p style="color:#888">暂无看空标的</p>
+    </div>
+</div>
+
+<div class="section">
+    <h2>五、按赛道分类</h2>
+    <h3 class="sector-title">制造军工（1只）</h3><div class="stock-grid">
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">宁德时代</span>
+                <span class="stock-code">SZ300750</span>
+                <span class="stock-sector">制造军工</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：雪月霜</div>
+            
+        </div></div><h3 class="sector-title">有色资源（4只）</h3><div class="stock-grid">
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">紫金矿业</span>
+                <span class="stock-code">SH601899</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bull-strength">看多强度 +3</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多2</span><span class="tag tag-user">3人</span></div>
+            <div class="stock-users">提及：愤怒的龙卷风、斯托伯的天空、金哥777</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">盐湖股份</span>
+                <span class="stock-code">SZ000792</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bull-strength">看多强度 +2</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">2人</span></div>
+            <div class="stock-users">提及：愤怒的龙卷风、金哥777</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">藏格矿业</span>
+                <span class="stock-code">SZ000408</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bull-strength">看多强度 +2</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：金哥777</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">西部矿业</span>
+                <span class="stock-code">SH601168</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bull-strength">看多强度 +2</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：金哥777</div>
+            
+        </div></div><h3 class="sector-title">能源煤炭（2只）</h3><div class="stock-grid">
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">中国石油股份</span>
+                <span class="stock-code">00857</span>
+                <span class="stock-sector">能源煤炭</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">中国海洋石油</span>
+                <span class="stock-code">00883</span>
+                <span class="stock-sector">能源煤炭</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+        </div></div><h3 class="sector-title">金融地产（2只）</h3><div class="stock-grid">
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">万科A</span>
+                <span class="stock-code">SZ000002</span>
+                <span class="stock-sector">金融地产</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">房地产</span>
+                <span class="stock-code">BK1080</span>
+                <span class="stock-sector">金融地产</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+        </div></div><h3 class="sector-title">其他（5只）</h3><div class="stock-grid">
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">海康威视</span>
+                <span class="stock-code">SZ002415</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">永新股份</span>
+                <span class="stock-code">SZ002014</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：天地侠影</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">阿美特克</span>
+                <span class="stock-code">AME</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：天地侠影</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">VISA</span>
+                <span class="stock-code">V</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：天地侠影</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">海螺水泥</span>
+                <span class="stock-code">SH600585</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：雪月霜</div>
+            
+        </div></div>
+</div>
+
+<div class="section">
+    <h2>六、大V股票相关发言明细</h2>
+    
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">斯托伯的天空</span>
+                <span class="user-count">4条股票相关发言</span>
+                <span class="user-stocks">涉及：中国海洋石油、海康威视、房地产、紫金矿业、中国石油股份、万科A</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-27 10:05</span>
+                    <span class="post-opinion op-看多">看多</span>
+                    <a href="https://xueqiu.com/9493911686/410654835" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">紫金矿业26年碳酸锂目标产能12万吨，上半年实际产出4.4万吨。紫金想冲肯定可以冲到12万，但我预计下半年不会达成目标，因为现在锂矿整体景气度已经下降很多的，就赚个波动钱。27年规划27-32万吨，会对市场造成冲击了，但也只能看情况了。紫金一直在根据锂矿价格变更产能计划，它自己其实也没大有数。紫金投锂矿的时机并不好，现在这块对它而言有些鸡肋了。锂是很难维持在一个理想的价位的，特别是在电动车市场越来越趋于饱和后。宁德在遭遇理想事件后，也会坚定直接开矿的决心。未来格局还真不好说。$紫金矿业(SH601899)$</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-27 09:47</span>
+                    <span class="post-opinion op-看多">看多</span>
+                    <a href="https://xueqiu.com/9493911686/410654184" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">回复@靠谱的yaoyuan: 从历史估值角度，它这位置确实比较低了。但如果只是当作一家稍微有点技术含量的制造业企业，目前的估值只能说合理。$海康威视(SZ002415)$未来估值能否抬升取决于它是否有成长性或者分红是否持续增加。//@靠谱的yaoyuan:回复@斯托伯的天空:低位发分析文章，良心大V。海康威视等了4年始终下不了手，这次感觉有点苗头了。</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-26 19:09</span>
+                    <span class="post-opinion op-买入/加仓">买入/加仓</span>
+                    <a href="https://xueqiu.com/9493911686/410639344" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">还有多少人记得当年的街区制改革？$万科A(SZ000002)$ $房地产(BK1080)$那一阵把开发商和物业公司吓坏了，也把一大帮业主吓坏了。不过后来基本没有得到执行，大家还是按照原有的小区模式修，地方也不干预，没有强制要求。大家都明白，这种产品真修出来直接就很难卖掉了。但是也有极少数开发商是这么干的……刚才就路过一个区域，都是单独的楼栋，道路开放，楼下全是底商，安全性很低，环境特别吵，和香港五十年前的老楼很像。基本都是用来出租。所以，不管任何正册，一定要……</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-26 14:57</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/9493911686/410632011" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">昨天G2会谈友好结束后后，给予了川子更多的空间拿下这场战争。川子现在战斗意志又上来了。$中国石油股份(00857)$ $中国海洋石油(00883)$</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">愤怒的龙卷风</span>
+                <span class="user-count">3条股票相关发言</span>
+                <span class="user-stocks">涉及：盐湖股份、紫金矿业</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-27 09:53</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/5798578993/410654383" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$盐湖股份(SZ000792)$ 盐湖股份估计碳酸锂跌回10万股价16-18就可以买了。</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-27 09:27</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/5798578993/410653442" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">回复@易冷观尘: 不是，你搞错了吧，并不是50％。如果试图纠正我，你应该比我更精通，然而你比我知道的更少。57.35％+30.78％×26.18％=65.41％，所以穿透是65.41％。$紫金矿业(SH601899)$查看图片//@易冷观尘:回复@愤怒的龙卷风:[已修改]巨龙58.16%的持股比例就是穿透后的权益。因为紫金原来持股比例是50.1%，加上藏格权益后的穿透才是58.16%</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-26 19:07</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/5798578993/410639301" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$紫金矿业(SH601899)$ 紫金矿业复盘。</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">金哥777</span>
+                <span class="user-count">3条股票相关发言</span>
+                <span class="user-stocks">涉及：盐湖股份、藏格矿业、紫金矿业、西部矿业</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-27 10:14</span>
+                    <span class="post-opinion op-看多">看多</span>
+                    <a href="https://xueqiu.com/1674052027/410655187" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">目前性价比也很高了，手里那么多现金，又没有有息负债，把分红率提高到百分之50➕，还有权益产能增量预期，这公司比市场百分之95➕的公司便宜，有钾肥保底，锂成本又最低，目前钾肥锂价格净利润100亿➕还是有的$盐湖股份(SZ000792)$ 。。。</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-27 10:03</span>
+                    <span class="post-opinion op-看多">看多</span>
+                    <a href="https://xueqiu.com/1674052027/410654751" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">回复@长期投资者的未来: 这问题以前我说过，2026年产能如果能完成30.6万吨铜，如果上次那机构去巨龙铜矿调研产能数据是真实的，7到8月两个月铜产能是5.24万吨，上半年铜产能是13.6万吨，那最后四个月铜产能是11.76万吨，由于产能爬坡应该是产能越来越高的，这样最后一个季度差不多每个月3万吨左右产能了。。。产能爬坡一年我预判明年巨龙铜矿二期每天处理矿山量应该会比今年最后四个月要高的，明年巨龙铜矿二期就有可能达到20万吨铜产能，去年一期产能是19.38万吨，明年产能就有可能增加到39万吨左右。。。藏格矿业三年计划，2028年铜产能是可能增加到42万吨左右的，因为品位率是无法控制的，有可能多一点，有可能少一点，判断明年的产能只要判断今年四季度巨龙铜矿一二期实际产能就可以大概推导到明年的产能了，公司说2027年产能指引只比今年多一万吨肯定是有问题的，要根据实际情况来自己推断。今年上半年其实</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-25 19:39</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/1674052027/410597806" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">非常不错的图，财富密码，祝中秋快乐，万事如意，心想事成，财源滚滚。。。$紫金矿业(SH601899)$ $藏格矿业(SZ000408)$</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">雪月霜</span>
+                <span class="user-count">2条股票相关发言</span>
+                <span class="user-stocks">涉及：海螺水泥、宁德时代</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-26 08:00</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/1505944393/410618430" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$海螺水泥(SH600585)$水泥涨价对于海螺是不是单纯抵消煤炭价格涨幅请看下在说吧</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-26 07:11</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/1505944393/410617263" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$宁德时代(SZ300750)$ 未来你们就会发现，做空碳酸锂，其实就是做空宁德</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">天地侠影</span>
+                <span class="user-count">1条股票相关发言</span>
+                <span class="user-stocks">涉及：阿美特克、永新股份、VISA</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-26 11:59</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/8601813520/410626714" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">如果是在大A中选一只，我会选择$永新股份(SZ002014)$ 。如果是在美股选一只，我会选择$阿美特克(AME)$ ，或是$VISA(V)$ 。</div>
+            </div></div>
+</div>
+
+<div class="footer">
+    本报告由程序自动生成，数据来源于雪球网公开信息，仅供参考，不构成投资建议。<br>
+    生成时间：2026-09-27 11:00:06
+</div>
+</div>
+</body>
+</html>
