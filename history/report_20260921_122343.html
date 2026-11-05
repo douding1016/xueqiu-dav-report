@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雪球大V多空观点与交易动作总结 - 2026-09-21 12:23:43</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, "Microsoft YaHei", sans-serif; background:#f5f7fa; color:#333; line-height:1.6; }
+.container { max-width:1200px; margin:0 auto; padding:20px; }
+.header { background:linear-gradient(135deg,#1a1a2e,#16213e); color:#fff; padding:30px; border-radius:12px; margin-bottom:20px; }
+.header h1 { font-size:24px; margin-bottom:8px; }
+.header .meta { font-size:14px; opacity:0.85; }
+.stats { display:grid; grid-template-columns:repeat(4,1fr); gap:15px; margin-bottom:25px; }
+.stat-card { background:#fff; padding:20px; border-radius:10px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.stat-card .num { font-size:32px; font-weight:bold; color:#1a1a2e; }
+.stat-card .label { font-size:13px; color:#888; margin-top:4px; }
+.section { background:#fff; border-radius:12px; padding:25px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.section h2 { font-size:18px; margin-bottom:15px; padding-bottom:10px; border-bottom:2px solid #eee; color:#1a1a2e; }
+.section h2::before { content:""; display:inline-block; width:4px; height:18px; background:#e94560; margin-right:10px; vertical-align:middle; border-radius:2px; }
+.tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:12px; margin-right:5px; font-weight:500; }
+.tag-buy { background:#ffe0e0; color:#d32f2f; }
+.tag-sell { background:#e0f0ff; color:#1565c0; }
+.tag-bull { background:#fff3e0; color:#e65100; }
+.tag-bear { background:#f3e5f5; color:#7b1fa2; }
+.tag-user { background:#e8f5e9; color:#2e7d32; }
+.stock-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(350px,1fr)); gap:15px; }
+.stock-card { border:1px solid #eee; border-radius:8px; padding:15px; background:#fafbfc; }
+.stock-header { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+.stock-name { font-size:16px; font-weight:bold; color:#1a1a2e; }
+.stock-code { font-size:12px; color:#999; }
+.stock-sector { font-size:11px; background:#e3f2fd; color:#1565c0; padding:1px 6px; border-radius:3px; }
+.stock-tags { margin-bottom:6px; }
+.stock-users { font-size:12px; color:#666; margin-bottom:8px; }
+.post-item { background:#fff; border-left:3px solid #e94560; padding:10px 12px; margin:8px 0; border-radius:0 6px 6px 0; }
+.post-meta { display:flex; gap:10px; align-items:center; font-size:12px; color:#888; margin-bottom:4px; flex-wrap:wrap; }
+.post-user { font-weight:bold; color:#333; }
+.post-opinion { padding:1px 6px; border-radius:3px; font-size:11px; }
+.op-买入\/加仓 { background:#ffe0e0; color:#d32f2f; }
+.op-卖出\/减仓 { background:#e0f0ff; color:#1565c0; }
+.op-看多 { background:#fff3e0; color:#e65100; }
+.op-看空 { background:#f3e5f5; color:#7b1fa2; }
+.op-持有 { background:#e8f5e9; color:#2e7d32; }
+.op-中性\/讨论 { background:#f5f5f5; color:#757575; }
+.op-买卖混合 { background:#fce4ec; color:#c2185b; }
+.op-偏多 { background:#fff3e0; color:#e65100; }
+.op-偏空 { background:#f3e5f5; color:#7b1fa2; }
+.op-多空分歧 { background:#fff8e1; color:#f57f17; }
+.strength { font-size:11px; padding:2px 8px; border-radius:3px; margin-left:auto; font-weight:600; }
+.bull-strength { background:#ffebee; color:#c62828; }
+.bear-strength { background:#e8eaf6; color:#283593; }
+.neutral-strength { background:#f5f5f5; color:#757575; }
+.post-text { font-size:13px; color:#444; }
+.post-link { color:#1565c0; text-decoration:none; }
+.post-link:hover { text-decoration:underline; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th, td { padding:10px 8px; text-align:left; border-bottom:1px solid #eee; }
+th { background:#f8f9fa; font-weight:600; color:#555; }
+tr:hover { background:#f8f9fa; }
+.sector-title { font-size:15px; color:#1a1a2e; margin:20px 0 10px; padding-left:10px; border-left:3px solid #0f3460; }
+.user-block { margin-bottom:20px; }
+.user-header { display:flex; gap:12px; align-items:center; margin-bottom:8px; flex-wrap:wrap; }
+.user-name { font-size:15px; font-weight:bold; color:#1a1a2e; }
+.user-count { font-size:12px; color:#888; }
+.user-stocks { font-size:12px; color:#666; }
+.conclusion { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+.conclusion-box { padding:15px; border-radius:8px; }
+.conclusion-bull { background:#fff5f5; border:1px solid #ffcdd2; }
+.conclusion-bear { background:#f5f5ff; border:1px solid #c5cae9; }
+.conclusion-box h3 { font-size:14px; margin-bottom:8px; }
+.conclusion-bull h3 { color:#c62828; }
+.conclusion-bear h3 { color:#283593; }
+.conclusion-box ul { padding-left:18px; font-size:13px; }
+.conclusion-box li { margin:4px 0; }
+.footer { text-align:center; padding:20px; color:#999; font-size:12px; }
+.nav-tabs { display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap; }
+.nav-tab { padding:8px 16px; background:#fff; border-radius:6px; text-decoration:none; color:#555; font-size:13px; box-shadow:0 1px 3px rgba(0,0,0,0.1); }
+.nav-tab.active { background:#e94560; color:#fff; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>雪球大V多空观点与交易动作总结</h1>
+    <div class="meta">更新时间：2026-09-21 12:23:43 ｜ 数据范围：近2天 ｜ 关注43人 ｜ 活跃26人 ｜ 总发言129条 ｜ 股票相关8条（已过滤121条无关发言）</div>
+</div>
+
+<div class="stats">
+    <div class="stat-card"><div class="num">12</div><div class="label">提及股票</div></div>
+    <div class="stat-card"><div class="num">0</div><div class="label">看多标的</div></div>
+    <div class="stat-card"><div class="num">4</div><div class="label">看空标的</div></div>
+    <div class="stat-card"><div class="num">1</div><div class="label">明确操作</div></div>
+</div>
+
+<div class="section">
+    <h2>一、核心结论</h2>
+    <div class="conclusion">
+        <div class="conclusion-box conclusion-bull">
+            <h3>主要看多 / 买入标的</h3>
+            <ul>
+                
+            </ul>
+        </div>
+        <div class="conclusion-box conclusion-bear">
+            <h3>主要看空 / 卖出标的</h3>
+            <ul>
+                <li><b>紫金矿业</b>（有色资源）-- 卖出1次，看空3次</li><li><b>藏格矿业</b>（有色资源）-- 卖出1次，看空2次</li><li><b>洛阳钼业</b>（有色资源）-- 卖出1次，看空1次</li><li><b>西部矿业</b>（有色资源）-- 卖出0次，看空1次</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>二、明确交易、加仓与仓位变化</h2>
+    <table><tr><th>时间</th><th>大V</th><th>标的</th><th>操作</th><th>详情</th><th>原文</th></tr>
+        <tr>
+            <td>2026-09-20 12:26</td>
+            <td>金哥777</td>
+            <td>紫金矿业、藏格矿业、洛阳钼业</td>
+            <td><span class="tag tag-buy">买入/清仓</span></td>
+            <td>2500多亿市值以下，那肯定这两三年不会买入有色金属，你既然预判了这结果怎么还可能花真金白银去下注你</td>
+            <td><a href="https://xueqiu.com/1674052027/409933794" target="_blank">原文</a></td>
+        </tr></table>
+</div>
+
+<div class="section">
+    <h2>三、主要看多与推荐标的</h2>
+    <div class="stock-grid">
+        
+    </div>
+</div>
+
+<div class="section">
+    <h2>四、主要看空、回避与谨慎标的</h2>
+    <div class="stock-grid">
+        
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">紫金矿业</span>
+                <span class="stock-code">SH601899</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bear-strength">看空强度 -7</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-sell">卖出1</span><span class="tag tag-bear">看空3</span><span class="tag tag-user">3人</span></div>
+            <div class="stock-users">提及：大黄蚬子hgx、金哥777、飞翔芸</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">金哥777</span>
+                        <span class="post-time">2026-09-21 10:10</span>
+                        <span class="post-opinion op-看空">看空</span>
+                        <a href="https://xueqiu.com/1674052027/409998622" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">投资股票职业投资者和普通散户差距没有其它行业那么大，那些机构，量化基金等等百分之95➕的人是不看基本面买股票的。所以市场先生才那么疯狂，很多优秀公司估值很低，很多垃圾股估值很高或者亏损了市值也还很高，特别是在大A更是离谱，也是因为这个原因普通散户收益率是可以跑赢百分之95➕的职业投资者的，如果做得足够好是可以跑赢百分之99.99的人的，因为大部分职业投资者研究的方向就是错的，越努力也许离投资的本质越远，我问过一个百亿量化的私募基金经理，统计学博士，讲他们在美国不学巴菲特那套价值投资逻辑，也不信那个，信的是数学等等，他的年化收益率百分之9点几，和我相差很大，如果这些职业投资者都研究基本面，那我们</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">金哥777</span>
+                        <span class="post-time">2026-09-20 12:26</span>
+                        <span class="post-opinion op-卖出/减仓">卖出/减仓</span>
+                        <a href="https://xueqiu.com/1674052027/409933794" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@了了又了不了了之: 2024年都在唱空紫金矿业了吧，看老木匠这帖子，很多粉丝还认为他是对的，，如果相信他就会16的紫金卖了去等肯定还会到10元以下的紫金。。。以前他还说洛钼8元多清仓了，哪怕现在回调很多股价还是有17左右，然后说评论个股的帖子都会删除，让粉丝认为他每次都对，今天又说要准备搞期货做空铜了，可能铜涨到11.5万然后不说话，等铜又跌回10.8万，他就会讲他提前判断对了铜期货到顶了，加10倍杠杆已经在11.5万下了空单赢麻了，每次都是赢，6月份有色金属大跌就说他看对了，确实老木匠说的很多话没有对错，从来不拿大宗商品价格和对比这公司的业绩变化，或者你预判铜跌到多少？金跌到多少？还总</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">飞翔芸</span>
+                        <span class="post-time">2026-09-19 12:36</span>
+                        <span class="post-opinion op-多空分歧">多空分歧</span>
+                        <a href="https://xueqiu.com/9957341637/409886190" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@加斯菲欧德: 看看必和必拓近50年的走势你就不用有这种担心了！查看图片//@加斯菲欧德:回复@飞翔芸:现在主要问题是如果AI被证伪，铜价是不是要大幅度下调，如同08年一样，铜价从8万一口气跌到3万，相应的铜股$云南铜业(SZ000878)$ 股价跌了90%，铜还是那个铜，不管科技如何发展，总是要用，但价格会短时间内大幅度回调，股价也大幅度回调，回调的股价和涨上去一样盈利，看你持有的是什么了，是股还是钱！就算股价能上涨，上涨多少？30%、50%？如果危机来了能跌多少？100%还是150%，那个投资的性价比好呢？矛盾是在这里！$紫金矿业(SH601899)$ $宁德时代(SZ300750)$</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">大黄蚬子hgx</span>
+                        <span class="post-time">2026-09-20 22:11</span>
+                        <span class="post-opinion op-看空">看空</span>
+                        <a href="https://xueqiu.com/3045778209/409965198" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">$紫金矿业(SH601899)$ 前几天用下象棋说明加息降息，一下子打开了回忆的大门，当年象棋的业余七级好像挺厉害的，其实也就是在单位工会活动象棋比赛有个参赛资格，连前三名都得不着，面对业八的棋手只有受虐的份。我有个亲戚在广西，是柳州市的业余比赛女子象棋前三，还有象棋裁判证，还在少年宫教小孩下棋，我和她下棋，她得让我一个大子，我才有可能下和棋。如果正常下，无论先手后手，我都是必输。我问她，你这个水平和职业棋手比起来能差多少？有没有赢的机会？她说，她和职业棋手的差距就和我和她的差距一样。你说我和职业棋手的差距多大？我的职业是牙医，这一生拔的阻生齿没有一万也有八千（普通牙就更多了），如果找来一个特</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">藏格矿业</span>
+                <span class="stock-code">SZ000408</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bear-strength">看空强度 -6</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-sell">卖出1</span><span class="tag tag-bear">看空2</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：金哥777</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">金哥777</span>
+                        <span class="post-time">2026-09-21 10:10</span>
+                        <span class="post-opinion op-看空">看空</span>
+                        <a href="https://xueqiu.com/1674052027/409998622" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">投资股票职业投资者和普通散户差距没有其它行业那么大，那些机构，量化基金等等百分之95➕的人是不看基本面买股票的。所以市场先生才那么疯狂，很多优秀公司估值很低，很多垃圾股估值很高或者亏损了市值也还很高，特别是在大A更是离谱，也是因为这个原因普通散户收益率是可以跑赢百分之95➕的职业投资者的，如果做得足够好是可以跑赢百分之99.99的人的，因为大部分职业投资者研究的方向就是错的，越努力也许离投资的本质越远，我问过一个百亿量化的私募基金经理，统计学博士，讲他们在美国不学巴菲特那套价值投资逻辑，也不信那个，信的是数学等等，他的年化收益率百分之9点几，和我相差很大，如果这些职业投资者都研究基本面，那我们</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">金哥777</span>
+                        <span class="post-time">2026-09-20 12:26</span>
+                        <span class="post-opinion op-卖出/减仓">卖出/减仓</span>
+                        <a href="https://xueqiu.com/1674052027/409933794" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@了了又了不了了之: 2024年都在唱空紫金矿业了吧，看老木匠这帖子，很多粉丝还认为他是对的，，如果相信他就会16的紫金卖了去等肯定还会到10元以下的紫金。。。以前他还说洛钼8元多清仓了，哪怕现在回调很多股价还是有17左右，然后说评论个股的帖子都会删除，让粉丝认为他每次都对，今天又说要准备搞期货做空铜了，可能铜涨到11.5万然后不说话，等铜又跌回10.8万，他就会讲他提前判断对了铜期货到顶了，加10倍杠杆已经在11.5万下了空单赢麻了，每次都是赢，6月份有色金属大跌就说他看对了，确实老木匠说的很多话没有对错，从来不拿大宗商品价格和对比这公司的业绩变化，或者你预判铜跌到多少？金跌到多少？还总</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">金哥777</span>
+                        <span class="post-time">2026-09-19 17:01</span>
+                        <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                        <a href="https://xueqiu.com/1674052027/409896368" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@世说新语: 嗯，有些数据可能是错的，明年预期产铜 31到32万吨肯定错得离谱，如果最后四个月能产铜12万吨，明年保守估计也是38万吨铜产量了，去年一期都19.38万吨了，也可能管理层低调一点，利润营收可能是真的，还有一个月左右三季报出来都什么都知道了$藏格矿业(SZ000408)$//@世说新语:回复@金哥777:基于错误的信息源分析没有意义，那篇纪要大量错误，前八月的产量是一眼假的错误，27年预期稍加思考也是必然假的错误，品位说法跟产量预期自相矛盾。藏格矿业已经给出了清晰的三年规划，根据上半年的报表和公开报道直接推断就可以了。26年全年31万吨铜，上半年13.4万吨，下半年17.5万吨</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">洛阳钼业</span>
+                <span class="stock-code">SH603993</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bear-strength">看空强度 -4</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-sell">卖出1</span><span class="tag tag-bear">看空1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：金哥777</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">金哥777</span>
+                        <span class="post-time">2026-09-20 12:26</span>
+                        <span class="post-opinion op-卖出/减仓">卖出/减仓</span>
+                        <a href="https://xueqiu.com/1674052027/409933794" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@了了又了不了了之: 2024年都在唱空紫金矿业了吧，看老木匠这帖子，很多粉丝还认为他是对的，，如果相信他就会16的紫金卖了去等肯定还会到10元以下的紫金。。。以前他还说洛钼8元多清仓了，哪怕现在回调很多股价还是有17左右，然后说评论个股的帖子都会删除，让粉丝认为他每次都对，今天又说要准备搞期货做空铜了，可能铜涨到11.5万然后不说话，等铜又跌回10.8万，他就会讲他提前判断对了铜期货到顶了，加10倍杠杆已经在11.5万下了空单赢麻了，每次都是赢，6月份有色金属大跌就说他看对了，确实老木匠说的很多话没有对错，从来不拿大宗商品价格和对比这公司的业绩变化，或者你预判铜跌到多少？金跌到多少？还总</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">西部矿业</span>
+                <span class="stock-code">SH601168</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bear-strength">看空强度 -2</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bear">看空1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：金哥777</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">金哥777</span>
+                        <span class="post-time">2026-09-21 10:10</span>
+                        <span class="post-opinion op-看空">看空</span>
+                        <a href="https://xueqiu.com/1674052027/409998622" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">投资股票职业投资者和普通散户差距没有其它行业那么大，那些机构，量化基金等等百分之95➕的人是不看基本面买股票的。所以市场先生才那么疯狂，很多优秀公司估值很低，很多垃圾股估值很高或者亏损了市值也还很高，特别是在大A更是离谱，也是因为这个原因普通散户收益率是可以跑赢百分之95➕的职业投资者的，如果做得足够好是可以跑赢百分之99.99的人的，因为大部分职业投资者研究的方向就是错的，越努力也许离投资的本质越远，我问过一个百亿量化的私募基金经理，统计学博士，讲他们在美国不学巴菲特那套价值投资逻辑，也不信那个，信的是数学等等，他的年化收益率百分之9点几，和我相差很大，如果这些职业投资者都研究基本面，那我们</div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>五、按赛道分类</h2>
+    <h3 class="sector-title">制造军工（2只）</h3><div class="stock-grid">
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">宁德时代</span>
+                <span class="stock-code">SZ300750</span>
+                <span class="stock-sector">制造军工</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：飞翔芸</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">赛力斯</span>
+                <span class="stock-code">SH601127</span>
+                <span class="stock-sector">制造军工</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：雪月霜</div>
+            
+        </div></div><h3 class="sector-title">有色资源（5只）</h3><div class="stock-grid">
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">云南铜业</span>
+                <span class="stock-code">SZ000878</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：飞翔芸</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">西部矿业</span>
+                <span class="stock-code">SH601168</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bear-strength">看空强度 -2</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bear">看空1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：金哥777</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">洛阳钼业</span>
+                <span class="stock-code">SH603993</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bear-strength">看空强度 -4</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-sell">卖出1</span><span class="tag tag-bear">看空1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：金哥777</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">藏格矿业</span>
+                <span class="stock-code">SZ000408</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bear-strength">看空强度 -6</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-sell">卖出1</span><span class="tag tag-bear">看空2</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：金哥777</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">紫金矿业</span>
+                <span class="stock-code">SH601899</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bear-strength">看空强度 -7</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-sell">卖出1</span><span class="tag tag-bear">看空3</span><span class="tag tag-user">3人</span></div>
+            <div class="stock-users">提及：大黄蚬子hgx、金哥777、飞翔芸</div>
+            
+        </div></div><h3 class="sector-title">其他（5只）</h3><div class="stock-grid">
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">科创50</span>
+                <span class="stock-code">SH000688</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">创业板指</span>
+                <span class="stock-code">SZ399006</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">ASM 太平洋</span>
+                <span class="stock-code">00522</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：拥抱大时代</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">建滔积层板</span>
+                <span class="stock-code">01888</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：拥抱大时代</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">Lumentum控股</span>
+                <span class="stock-code">LITE</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：拥抱大时代</div>
+            
+        </div></div>
+</div>
+
+<div class="section">
+    <h2>六、大V股票相关发言明细</h2>
+    
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">金哥777</span>
+                <span class="user-count">3条股票相关发言</span>
+                <span class="user-stocks">涉及：藏格矿业、洛阳钼业、紫金矿业、西部矿业</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-21 10:10</span>
+                    <span class="post-opinion op-看空">看空</span>
+                    <a href="https://xueqiu.com/1674052027/409998622" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">投资股票职业投资者和普通散户差距没有其它行业那么大，那些机构，量化基金等等百分之95➕的人是不看基本面买股票的。所以市场先生才那么疯狂，很多优秀公司估值很低，很多垃圾股估值很高或者亏损了市值也还很高，特别是在大A更是离谱，也是因为这个原因普通散户收益率是可以跑赢百分之95➕的职业投资者的，如果做得足够好是可以跑赢百分之99.99的人的，因为大部分职业投资者研究的方向就是错的，越努力也许离投资的本质越远，我问过一个百亿量化的私募基金经理，统计学博士，讲他们在美国不学巴菲特那套价值投资逻辑，也不信那个，信的是数学等等，他的年化收益率百分之9点几，和我相差很大，如果这些职业投资者都研究基本面，那我们普通散户估计很难比他们厉害，但他们研究技术分析，研究各种量化因素等等就只能和同样研究这些的普通人比专业，和我们研究公司基本面的人无法比，就像紫金的季报年报大黄老师肯定比那些券商研报研究得更透，猜业绩更</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-20 12:26</span>
+                    <span class="post-opinion op-卖出/减仓">卖出/减仓</span>
+                    <a href="https://xueqiu.com/1674052027/409933794" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">回复@了了又了不了了之: 2024年都在唱空紫金矿业了吧，看老木匠这帖子，很多粉丝还认为他是对的，，如果相信他就会16的紫金卖了去等肯定还会到10元以下的紫金。。。以前他还说洛钼8元多清仓了，哪怕现在回调很多股价还是有17左右，然后说评论个股的帖子都会删除，让粉丝认为他每次都对，今天又说要准备搞期货做空铜了，可能铜涨到11.5万然后不说话，等铜又跌回10.8万，他就会讲他提前判断对了铜期货到顶了，加10倍杠杆已经在11.5万下了空单赢麻了，每次都是赢，6月份有色金属大跌就说他看对了，确实老木匠说的很多话没有对错，从来不拿大宗商品价格和对比这公司的业绩变化，或者你预判铜跌到多少？金跌到多少？还总是讲一个公司2到3元涨了5倍后肯定不会买，买的人大概率亏钱，不就是说紫金矿业，藏格，洛钼等等有色金属公司嘛？2年多前说紫金矿业肯定会回到10元以下，今年每股股息率都会超过1元了，五年后每股股息率可能就</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-19 17:01</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/1674052027/409896368" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">回复@世说新语: 嗯，有些数据可能是错的，明年预期产铜 31到32万吨肯定错得离谱，如果最后四个月能产铜12万吨，明年保守估计也是38万吨铜产量了，去年一期都19.38万吨了，也可能管理层低调一点，利润营收可能是真的，还有一个月左右三季报出来都什么都知道了$藏格矿业(SZ000408)$//@世说新语:回复@金哥777:基于错误的信息源分析没有意义，那篇纪要大量错误，前八月的产量是一眼假的错误，27年预期稍加思考也是必然假的错误，品位说法跟产量预期自相矛盾。藏格矿业已经给出了清晰的三年规划，根据上半年的报表和公开报道直接推断就可以了。26年全年31万吨铜，上半年13.4万吨，下半年17.5万吨以上，根据新闻报道，6月底加了一台日处理量4.6万吨的磨机。根据今年下半年产量合理推测明年就是35万吨以上，也跟规划指引对得上。根据紫金矿业股东会的公开说法，巨龙铜矿会有增储，但应当是深部为主，巨龙的</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">斯托伯的天空</span>
+                <span class="user-count">1条股票相关发言</span>
+                <span class="user-stocks">涉及：科创50、创业板指</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-21 09:28</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/9493911686/409983939" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">科技跌是科技自己的问题，老登跌那都是科技的问题。目前的市场就是这样。$科创50(SH000688)$ $创业板指(SZ399006)$但你并不知道哪一天哪一分钟就突然逆转了。</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">拥抱大时代</span>
+                <span class="user-count">1条股票相关发言</span>
+                <span class="user-stocks">涉及：建滔积层板、ASM 太平洋、Lumentum控股</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-21 08:49</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/1453667055/409978452" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">今天越野跑 cross country感觉这周市场要risk on了ai回归fast and furious$ASM 太平洋(00522)$ $建滔积层板(01888)$ $Lumentum控股(LITE)$</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">飞翔芸</span>
+                <span class="user-count">1条股票相关发言</span>
+                <span class="user-stocks">涉及：紫金矿业、宁德时代、云南铜业</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-19 12:36</span>
+                    <span class="post-opinion op-多空分歧">多空分歧</span>
+                    <a href="https://xueqiu.com/9957341637/409886190" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">回复@加斯菲欧德: 看看必和必拓近50年的走势你就不用有这种担心了！查看图片//@加斯菲欧德:回复@飞翔芸:现在主要问题是如果AI被证伪，铜价是不是要大幅度下调，如同08年一样，铜价从8万一口气跌到3万，相应的铜股$云南铜业(SZ000878)$ 股价跌了90%，铜还是那个铜，不管科技如何发展，总是要用，但价格会短时间内大幅度回调，股价也大幅度回调，回调的股价和涨上去一样盈利，看你持有的是什么了，是股还是钱！就算股价能上涨，上涨多少？30%、50%？如果危机来了能跌多少？100%还是150%，那个投资的性价比好呢？矛盾是在这里！$紫金矿业(SH601899)$ $宁德时代(SZ300750)$</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">雪月霜</span>
+                <span class="user-count">1条股票相关发言</span>
+                <span class="user-stocks">涉及：赛力斯</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-20 07:25</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/1505944393/409915981" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$赛力斯(SH601127)$ 现在看出来没有灵魂的代驾了吧，华为智驾越成功，赛力斯越难以盈利，这就是代工厂的代价现在鸿蒙遍地走，比路上野狗都多</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">大黄蚬子hgx</span>
+                <span class="user-count">1条股票相关发言</span>
+                <span class="user-stocks">涉及：紫金矿业</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-09-20 22:11</span>
+                    <span class="post-opinion op-看空">看空</span>
+                    <a href="https://xueqiu.com/3045778209/409965198" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$紫金矿业(SH601899)$ 前几天用下象棋说明加息降息，一下子打开了回忆的大门，当年象棋的业余七级好像挺厉害的，其实也就是在单位工会活动象棋比赛有个参赛资格，连前三名都得不着，面对业八的棋手只有受虐的份。我有个亲戚在广西，是柳州市的业余比赛女子象棋前三，还有象棋裁判证，还在少年宫教小孩下棋，我和她下棋，她得让我一个大子，我才有可能下和棋。如果正常下，无论先手后手，我都是必输。我问她，你这个水平和职业棋手比起来能差多少？有没有赢的机会？她说，她和职业棋手的差距就和我和她的差距一样。你说我和职业棋手的差距多大？我的职业是牙医，这一生拔的阻生齿没有一万也有八千（普通牙就更多了），如果找来一个特别聪明的985的计算机博士，我毫无保留地告诉他怎么拔阻生齿，把麻药钳子梃子涡轮钻该用的器械都给他，他能拔最简单的阻生齿吗？不能。他和我在拔牙方面的差距，就和我与职业棋手之间的差距一样大。业余就是业余，</div>
+            </div></div>
+</div>
+
+<div class="footer">
+    本报告由程序自动生成，数据来源于雪球网公开信息，仅供参考，不构成投资建议。<br>
+    生成时间：2026-09-21 12:23:43
+</div>
+</div>
+</body>
+</html>
