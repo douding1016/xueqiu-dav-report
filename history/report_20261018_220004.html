@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雪球大V多空观点与交易动作总结 - 2026-10-18 22:00:04</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, "Microsoft YaHei", sans-serif; background:#f5f7fa; color:#333; line-height:1.6; }
+.container { max-width:1200px; margin:0 auto; padding:20px; }
+.header { background:linear-gradient(135deg,#1a1a2e,#16213e); color:#fff; padding:30px; border-radius:12px; margin-bottom:20px; }
+.header h1 { font-size:24px; margin-bottom:8px; }
+.header .meta { font-size:14px; opacity:0.85; }
+.stats { display:grid; grid-template-columns:repeat(4,1fr); gap:15px; margin-bottom:25px; }
+.stat-card { background:#fff; padding:20px; border-radius:10px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.stat-card .num { font-size:32px; font-weight:bold; color:#1a1a2e; }
+.stat-card .label { font-size:13px; color:#888; margin-top:4px; }
+.section { background:#fff; border-radius:12px; padding:25px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.section h2 { font-size:18px; margin-bottom:15px; padding-bottom:10px; border-bottom:2px solid #eee; color:#1a1a2e; }
+.section h2::before { content:""; display:inline-block; width:4px; height:18px; background:#e94560; margin-right:10px; vertical-align:middle; border-radius:2px; }
+.tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:12px; margin-right:5px; font-weight:500; }
+.tag-buy { background:#ffe0e0; color:#d32f2f; }
+.tag-sell { background:#e0f0ff; color:#1565c0; }
+.tag-bull { background:#fff3e0; color:#e65100; }
+.tag-bear { background:#f3e5f5; color:#7b1fa2; }
+.tag-user { background:#e8f5e9; color:#2e7d32; }
+.stock-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(350px,1fr)); gap:15px; }
+.stock-card { border:1px solid #eee; border-radius:8px; padding:15px; background:#fafbfc; }
+.stock-header { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+.stock-name { font-size:16px; font-weight:bold; color:#1a1a2e; }
+.stock-code { font-size:12px; color:#999; }
+.stock-sector { font-size:11px; background:#e3f2fd; color:#1565c0; padding:1px 6px; border-radius:3px; }
+.stock-tags { margin-bottom:6px; }
+.stock-users { font-size:12px; color:#666; margin-bottom:8px; }
+.post-item { background:#fff; border-left:3px solid #e94560; padding:10px 12px; margin:8px 0; border-radius:0 6px 6px 0; }
+.post-meta { display:flex; gap:10px; align-items:center; font-size:12px; color:#888; margin-bottom:4px; flex-wrap:wrap; }
+.post-user { font-weight:bold; color:#333; }
+.post-opinion { padding:1px 6px; border-radius:3px; font-size:11px; }
+.op-买入\/加仓 { background:#ffe0e0; color:#d32f2f; }
+.op-卖出\/减仓 { background:#e0f0ff; color:#1565c0; }
+.op-看多 { background:#fff3e0; color:#e65100; }
+.op-看空 { background:#f3e5f5; color:#7b1fa2; }
+.op-持有 { background:#e8f5e9; color:#2e7d32; }
+.op-中性\/讨论 { background:#f5f5f5; color:#757575; }
+.op-买卖混合 { background:#fce4ec; color:#c2185b; }
+.op-偏多 { background:#fff3e0; color:#e65100; }
+.op-偏空 { background:#f3e5f5; color:#7b1fa2; }
+.op-多空分歧 { background:#fff8e1; color:#f57f17; }
+.strength { font-size:11px; padding:2px 8px; border-radius:3px; margin-left:auto; font-weight:600; }
+.bull-strength { background:#ffebee; color:#c62828; }
+.bear-strength { background:#e8eaf6; color:#283593; }
+.neutral-strength { background:#f5f5f5; color:#757575; }
+.post-text { font-size:13px; color:#444; }
+.post-link { color:#1565c0; text-decoration:none; }
+.post-link:hover { text-decoration:underline; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th, td { padding:10px 8px; text-align:left; border-bottom:1px solid #eee; }
+th { background:#f8f9fa; font-weight:600; color:#555; }
+tr:hover { background:#f8f9fa; }
+.sector-title { font-size:15px; color:#1a1a2e; margin:20px 0 10px; padding-left:10px; border-left:3px solid #0f3460; }
+.user-block { margin-bottom:20px; }
+.user-header { display:flex; gap:12px; align-items:center; margin-bottom:8px; flex-wrap:wrap; }
+.user-name { font-size:15px; font-weight:bold; color:#1a1a2e; }
+.user-count { font-size:12px; color:#888; }
+.user-stocks { font-size:12px; color:#666; }
+.conclusion { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+.conclusion-box { padding:15px; border-radius:8px; }
+.conclusion-bull { background:#fff5f5; border:1px solid #ffcdd2; }
+.conclusion-bear { background:#f5f5ff; border:1px solid #c5cae9; }
+.conclusion-box h3 { font-size:14px; margin-bottom:8px; }
+.conclusion-bull h3 { color:#c62828; }
+.conclusion-bear h3 { color:#283593; }
+.conclusion-box ul { padding-left:18px; font-size:13px; }
+.conclusion-box li { margin:4px 0; }
+.footer { text-align:center; padding:20px; color:#999; font-size:12px; }
+.nav-tabs { display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap; }
+.nav-tab { padding:8px 16px; background:#fff; border-radius:6px; text-decoration:none; color:#555; font-size:13px; box-shadow:0 1px 3px rgba(0,0,0,0.1); }
+.nav-tab.active { background:#e94560; color:#fff; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>雪球大V多空观点与交易动作总结</h1>
+    <div class="meta">更新时间：2026-10-18 22:00:04 ｜ 数据范围：近2天 ｜ 关注43人 ｜ 活跃22人 ｜ 总发言125条 ｜ 股票相关22条（已过滤103条无关发言）</div>
+</div>
+
+<div class="stats">
+    <div class="stat-card"><div class="num">24</div><div class="label">提及股票</div></div>
+    <div class="stat-card"><div class="num">16</div><div class="label">看多标的</div></div>
+    <div class="stat-card"><div class="num">1</div><div class="label">看空标的</div></div>
+    <div class="stat-card"><div class="num">4</div><div class="label">明确操作</div></div>
+</div>
+
+<div class="section">
+    <h2>一、核心结论</h2>
+    <div class="conclusion">
+        <div class="conclusion-box conclusion-bull">
+            <h3>主要看多 / 买入标的</h3>
+            <ul>
+                <li><b>藏格矿业</b>（有色资源）-- 2人提及，买入2次，看多5次</li><li><b>紫金矿业</b>（有色资源）-- 4人提及，买入1次，看多3次</li><li><b>中国海洋石油</b>（能源煤炭）-- 2人提及，买入0次，看多2次</li><li><b>心动公司</b>（其他）-- 1人提及，买入0次，看多1次</li><li><b>紫金黄金国际</b>（有色资源）-- 1人提及，买入1次，看多2次</li><li><b>广汇能源</b>（其他）-- 1人提及，买入0次，看多1次</li><li><b>中国石油</b>（能源煤炭）-- 1人提及，买入0次，看多1次</li><li><b>紫金矿业ADR</b>（有色资源）-- 1人提及，买入1次，看多1次</li>
+            </ul>
+        </div>
+        <div class="conclusion-box conclusion-bear">
+            <h3>主要看空 / 卖出标的</h3>
+            <ul>
+                <li><b>西部矿业</b>（有色资源）-- 卖出0次，看空1次</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>二、明确交易、加仓与仓位变化</h2>
+    <table><tr><th>时间</th><th>大V</th><th>标的</th><th>操作</th><th>详情</th><th>原文</th></tr>
+        <tr>
+            <td>2026-10-18 08:31</td>
+            <td>斯托伯的天空</td>
+            <td>紫金黄金国际、紫金矿业ADR、黄金概念</td>
+            <td><span class="tag tag-buy">买点</span></td>
+            <td>种美联储就继续加，多加点，那我可能也会多买点。$紫金黄金国际(02259)$ $紫金矿业ADR(ZI</td>
+            <td><a href="https://xueqiu.com/9493911686/412756258" target="_blank">原文</a></td>
+        </tr>
+        <tr>
+            <td>2026-10-17 15:30</td>
+            <td>金哥777</td>
+            <td>紫金矿业、藏格矿业</td>
+            <td><span class="tag tag-buy">买入</span></td>
+            <td>的可能，如若如此，那么我们是否越晚介入，买入的的价格就更低呢，谢谢？</td>
+            <td><a href="https://xueqiu.com/1674052027/412729271" target="_blank">原文</a></td>
+        </tr>
+        <tr>
+            <td>2026-10-17 13:16</td>
+            <td>金哥777</td>
+            <td>藏格矿业</td>
+            <td><span class="tag tag-buy">满仓</span></td>
+            <td>资: 无法预测，做期货不管涨跌，如果一直满仓必然清0回到解放前，我买股票不需要大宗商品价格涨多少，哪</td>
+            <td><a href="https://xueqiu.com/1674052027/412723392" target="_blank">原文</a></td>
+        </tr>
+        <tr>
+            <td>2026-10-17 14:21</td>
+            <td>徒步三萬里</td>
+            <td>SpaceX、小马智行-W、谷歌C</td>
+            <td><span class="tag tag-buy">新进</span></td>
+            <td>世界模型最新进展，无人驾驶最近动作很大 $SpaceX(SPCX)$</td>
+            <td><a href="https://xueqiu.com/4857977486/412726261" target="_blank">原文</a></td>
+        </tr></table>
+</div>
+
+<div class="section">
+    <h2>三、主要看多与推荐标的</h2>
+    <div class="stock-grid">
+        
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">藏格矿业</span>
+                <span class="stock-code">SZ000408</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bull-strength">看多强度 +9</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入2</span><span class="tag tag-bull">看多5</span><span class="tag tag-bear">看空1</span><span class="tag tag-user">2人</span></div>
+            <div class="stock-users">提及：学知利行、金哥777</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">金哥777</span>
+                        <span class="post-time">2026-10-18 14:44</span>
+                        <span class="post-opinion op-看空">看空</span>
+                        <a href="https://xueqiu.com/1674052027/412773714" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">规划的是每天矿石处理量，我猜测以前设计的产能考虑了气候影响。总体设计矿山处理量是比规划的要大，但矿山很多都是智能化，无人化开采的，对于气候影响就要小得多了，还有一期的品位率应该比平均品位要高一点，前期开采应该是找品位率相对高一点的开采，这是露天矿可开采年限会很长，假设45年，前面20年产能相对平均而言品位率大概率会高一点。后面可能随着技术上的升级，或者厂房设备的升级，或者以后还会新增加更多设备让产能不会下降，但那都是二三十年后的事了。。。还有开藏格矿业股东大会的时候吴董事长说过矿山的储量是根据这矿石的价值来计算的，比如以前铜价3万，钼10万，银3元每克，金100元每克，巨龙铜矿是不值钱的，不值</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">金哥777</span>
+                        <span class="post-time">2026-10-17 15:30</span>
+                        <span class="post-opinion op-买入/加仓">买入/加仓</span>
+                        <a href="https://xueqiu.com/1674052027/412729271" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@苏州湾1号玩家: 你问这些问题矛盾很大，美国利率高和我没有什么关系，我又不可以人民币换美元拿去买美债，如果紫金矿业是美国上市，美国企业像$紫金矿业(SH601899)$ 这样的竞争力，资源量，成长性，按美国的金铜股给估值紫金最少2万亿人民币，还是美国人可以买百分之5➕股息率的美债情况下。国内的资金只能和国内的无风险利率比，目前看美国加息减息和大宗商品价格没有太多关联性，刚刚才有人和我讲等美国减息了铜的价格有人预计会下跌百分之20左右，我看了历史记录金铜等大宗商品价格根本和美国利率多少没有任何关联关系，特别是铜属于工业金属，价格只和供需关系有关，未来股价高低，大宗商品价格无法判断，紫金主要</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">金哥777</span>
+                        <span class="post-time">2026-10-17 13:23</span>
+                        <span class="post-opinion op-偏多">偏多</span>
+                        <a href="https://xueqiu.com/1674052027/412723693" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@慢牛来了2020: 我一直研究的，，煤矿价格上涨对于产能大，露天煤矿是非常大的利好。。。谢谢，以后有机会再买吧，现在先等等藏格矿业，//@慢牛来了2020:回复@金哥777:$藏格矿业(SZ000408)$ $广汇能源(SH600256)$金哥5年后藏格矿业巨龙铜矿的投资收益也有164亿，加上钾肥和碳酸锂合计200亿，藏格未来可期。同时我早上也估算过，广汇4年后年产能1亿吨露天煤，加上淖梧铁路通车和临哈铁路电气化改造完成使得广汇煤炭轻松直达北港且完全运费有望低至360元，加上170元开采成本，合计总成本530元。综上，到2030年起，只要北港煤价高于700元，可确保广汇煤炭吨净利润高于1</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">金哥777</span>
+                        <span class="post-time">2026-10-17 13:21</span>
+                        <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                        <a href="https://xueqiu.com/1674052027/412723611" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@厚积薄发001: 加息有人讲大宗商品价格会跌，加息后发现铜没跌，还涨了，然后又有人说既然你加息不跌，那以后减息铜总要跌吧？有些人总结就是不管怎么样以后都要大跌，，其实铜价如果跌回9.5万左右，对于藏格矿业来说也还是暴利，吨铜净利润有6万➕，我也很满意了，$藏格矿业(SZ000408)$//@厚积薄发001:回复@银锂:不加息了铜不是要涨？为什么回落？</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">金哥777</span>
+                        <span class="post-time">2026-10-17 13:16</span>
+                        <span class="post-opinion op-买入/加仓">买入/加仓</span>
+                        <a href="https://xueqiu.com/1674052027/412723392" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@浩熠投资: 无法预测，做期货不管涨跌，如果一直满仓必然清0回到解放前，我买股票不需要大宗商品价格涨多少，哪怕铜价未来跌百分之30，以后吨铜净利润跌到5万，五年后藏格每股分红也许还有8元，藏格矿业股价也可能涨到200左右，哪怕股价不涨每股分红8元我也可以接受。。。买期货估计爆仓几十次了这五年$藏格矿业(SZ000408)$//@浩熠投资:回复@金哥777:铜，锂，钾肥的未来单价能预测吗，如果能岂不是做期货更赚钱！</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">紫金矿业</span>
+                <span class="stock-code">SH601899</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bull-strength">看多强度 +6</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多3</span><span class="tag tag-bear">看空1</span><span class="tag tag-user">4人</span></div>
+            <div class="stock-users">提及：学知利行、愤怒的龙卷风、金哥777、飞翔芸</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">愤怒的龙卷风</span>
+                        <span class="post-time">2026-10-17 22:25</span>
+                        <span class="post-opinion op-看多">看多</span>
+                        <a href="https://xueqiu.com/5798578993/412747564" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">$宁德时代(SZ300750)$ $紫金矿业(SH601899)$ $兆易创新(SH603986)$ 业绩全部高增，股价全线深跌：五只明星股，跌的却是五种不同的东西光模块、存储、光纤、电池、有色金属——2026年A股五份业绩超预期、股价大回撤的标本</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">金哥777</span>
+                        <span class="post-time">2026-10-18 14:44</span>
+                        <span class="post-opinion op-看空">看空</span>
+                        <a href="https://xueqiu.com/1674052027/412773714" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">规划的是每天矿石处理量，我猜测以前设计的产能考虑了气候影响。总体设计矿山处理量是比规划的要大，但矿山很多都是智能化，无人化开采的，对于气候影响就要小得多了，还有一期的品位率应该比平均品位要高一点，前期开采应该是找品位率相对高一点的开采，这是露天矿可开采年限会很长，假设45年，前面20年产能相对平均而言品位率大概率会高一点。后面可能随着技术上的升级，或者厂房设备的升级，或者以后还会新增加更多设备让产能不会下降，但那都是二三十年后的事了。。。还有开藏格矿业股东大会的时候吴董事长说过矿山的储量是根据这矿石的价值来计算的，比如以前铜价3万，钼10万，银3元每克，金100元每克，巨龙铜矿是不值钱的，不值</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">金哥777</span>
+                        <span class="post-time">2026-10-17 15:30</span>
+                        <span class="post-opinion op-买入/加仓">买入/加仓</span>
+                        <a href="https://xueqiu.com/1674052027/412729271" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@苏州湾1号玩家: 你问这些问题矛盾很大，美国利率高和我没有什么关系，我又不可以人民币换美元拿去买美债，如果紫金矿业是美国上市，美国企业像$紫金矿业(SH601899)$ 这样的竞争力，资源量，成长性，按美国的金铜股给估值紫金最少2万亿人民币，还是美国人可以买百分之5➕股息率的美债情况下。国内的资金只能和国内的无风险利率比，目前看美国加息减息和大宗商品价格没有太多关联性，刚刚才有人和我讲等美国减息了铜的价格有人预计会下跌百分之20左右，我看了历史记录金铜等大宗商品价格根本和美国利率多少没有任何关联关系，特别是铜属于工业金属，价格只和供需关系有关，未来股价高低，大宗商品价格无法判断，紫金主要</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">学知利行</span>
+                        <span class="post-time">2026-10-18 15:21</span>
+                        <span class="post-opinion op-看多">看多</span>
+                        <a href="https://xueqiu.com/2681290304/412775150" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">$藏格矿业(SZ000408)$ $紫金矿业(SH601899)$ $中国海洋石油(00883)$ 我们赚藏格和紫金矿业的钱也好，中海油的钱也好，从底层逻辑上说，实际是在赚全球通胀叠加新技术革命的钱，通胀推高大宗资源价格，新技术革命产生新的资源需求，铜基本是两者的叠加。当然，国内定价的东西，目前实际是处于通缩阶段，短期内很难有大的机会。这些应该是往后中期的大逻辑，短期的股价波动 实际是不断给投资者机会。</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">飞翔芸</span>
+                        <span class="post-time">2026-10-17 21:21</span>
+                        <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                        <a href="https://xueqiu.com/9957341637/412744779" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">$紫金矿业(SH601899)$ 网页链接</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">中国海洋石油</span>
+                <span class="stock-code">00883</span>
+                <span class="stock-sector">能源煤炭</span>
+                <span class="strength bull-strength">看多强度 +3</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多2</span><span class="tag tag-user">2人</span></div>
+            <div class="stock-users">提及：学知利行、斯托伯的天空</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">斯托伯的天空</span>
+                        <span class="post-time">2026-10-18 10:24</span>
+                        <span class="post-opinion op-看多">看多</span>
+                        <a href="https://xueqiu.com/9493911686/412761573" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@要有仁义礼智信: 我的原话应该是：如果原油持续上涨或者维持高位，那美联储也不得不加，届时该加就加，但是空间很有限。……我们不能因为持有了什么资产就主观臆测这种宏观政策，一定要随时站在施政者和第三人的角度去思考问题，不然很容易得出错误结论，然后产生长期误判。……不能让交易来决定你的观点，而是让观点决定你的交易。$紫金黄金国际(02259)$ $中国海洋石油(00883)$ $中国石油(SH601857)$//@要有仁义礼智信:回复@斯托伯的天空:今年三四月份的时候，整个雪球都在说美国不敢加，只有斯大说没什么不敢加的</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">学知利行</span>
+                        <span class="post-time">2026-10-18 15:21</span>
+                        <span class="post-opinion op-看多">看多</span>
+                        <a href="https://xueqiu.com/2681290304/412775150" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">$藏格矿业(SZ000408)$ $紫金矿业(SH601899)$ $中国海洋石油(00883)$ 我们赚藏格和紫金矿业的钱也好，中海油的钱也好，从底层逻辑上说，实际是在赚全球通胀叠加新技术革命的钱，通胀推高大宗资源价格，新技术革命产生新的资源需求，铜基本是两者的叠加。当然，国内定价的东西，目前实际是处于通缩阶段，短期内很难有大的机会。这些应该是往后中期的大逻辑，短期的股价波动 实际是不断给投资者机会。</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">心动公司</span>
+                <span class="stock-code">02400</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength bull-strength">看多强度 +3</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：逸修1</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">逸修1</span>
+                        <span class="post-time">2026-10-18 11:01</span>
+                        <span class="post-opinion op-看多">看多</span>
+                        <a href="https://xueqiu.com/1936609590/412763791" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@加金星光1009: 之前都没注意到，这人提到才注意到小游戏的最低出价5块变3块，这个水准那些变现能力强、留存好的小游戏即使是广告变现也能出得起，内购变现更不要说，难怪最近首页也看到小游戏的广告了 查看图片//@加金星光1009:回复@逸修1:Step-5-Preview:这份月报是 **TapTap 分部**最高频的经营先行指标。最关键的一点：REP 高消耗榜上的《伊莫》（FunPlus 发行）、《我的休闲时光》（卓动/天之梦发行）**都是第三方游戏，心动自研产品不在榜上**——REP 消耗基本是外部广告需求的“干净样本”，不含关联交易噪音，是观察 TapTap 广告景气少有的理想窗口。</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">紫金黄金国际</span>
+                <span class="stock-code">02259</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bull-strength">看多强度 +2</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多2</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">斯托伯的天空</span>
+                        <span class="post-time">2026-10-18 10:24</span>
+                        <span class="post-opinion op-看多">看多</span>
+                        <a href="https://xueqiu.com/9493911686/412761573" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@要有仁义礼智信: 我的原话应该是：如果原油持续上涨或者维持高位，那美联储也不得不加，届时该加就加，但是空间很有限。……我们不能因为持有了什么资产就主观臆测这种宏观政策，一定要随时站在施政者和第三人的角度去思考问题，不然很容易得出错误结论，然后产生长期误判。……不能让交易来决定你的观点，而是让观点决定你的交易。$紫金黄金国际(02259)$ $中国海洋石油(00883)$ $中国石油(SH601857)$//@要有仁义礼智信:回复@斯托伯的天空:今年三四月份的时候，整个雪球都在说美国不敢加，只有斯大说没什么不敢加的</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">斯托伯的天空</span>
+                        <span class="post-time">2026-10-18 08:31</span>
+                        <span class="post-opinion op-买入/加仓">买入/加仓</span>
+                        <a href="https://xueqiu.com/9493911686/412756258" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@持仓聚金: 昨晚我看最近的诺贝尔经济学奖伍德福德的主要观点，他认为预期（前瞻指引）很重要，比如现在油价很高，那大家预期通胀高，ZF和央行应该设置前瞻指引来降低中预期，例如告诉大家明年会加息500个基点。这个理论指导了美联储很多年。但是我们现在看到，现在沃什不提供前瞻指引，这个我一下就看明白了，他没法提供，他的空间太小了。所以，我说有种美联储就继续加，多加点，那我可能也会多买点。$紫金黄金国际(02259)$ $紫金矿业ADR(ZIJMY)$ $黄金概念(BK1473)$//@持仓聚金:回复@斯托伯的天空:其实就是斯大说过的，米国政策空间不大，大规模加息就把市场加爆，产生流动性危机，现在才</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">广汇能源</span>
+                <span class="stock-code">SH600256</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength bull-strength">看多强度 +2</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：金哥777</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">金哥777</span>
+                        <span class="post-time">2026-10-17 13:23</span>
+                        <span class="post-opinion op-偏多">偏多</span>
+                        <a href="https://xueqiu.com/1674052027/412723693" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@慢牛来了2020: 我一直研究的，，煤矿价格上涨对于产能大，露天煤矿是非常大的利好。。。谢谢，以后有机会再买吧，现在先等等藏格矿业，//@慢牛来了2020:回复@金哥777:$藏格矿业(SZ000408)$ $广汇能源(SH600256)$金哥5年后藏格矿业巨龙铜矿的投资收益也有164亿，加上钾肥和碳酸锂合计200亿，藏格未来可期。同时我早上也估算过，广汇4年后年产能1亿吨露天煤，加上淖梧铁路通车和临哈铁路电气化改造完成使得广汇煤炭轻松直达北港且完全运费有望低至360元，加上170元开采成本，合计总成本530元。综上，到2030年起，只要北港煤价高于700元，可确保广汇煤炭吨净利润高于1</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">中国石油</span>
+                <span class="stock-code">SH601857</span>
+                <span class="stock-sector">能源煤炭</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">斯托伯的天空</span>
+                        <span class="post-time">2026-10-18 10:24</span>
+                        <span class="post-opinion op-看多">看多</span>
+                        <a href="https://xueqiu.com/9493911686/412761573" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@要有仁义礼智信: 我的原话应该是：如果原油持续上涨或者维持高位，那美联储也不得不加，届时该加就加，但是空间很有限。……我们不能因为持有了什么资产就主观臆测这种宏观政策，一定要随时站在施政者和第三人的角度去思考问题，不然很容易得出错误结论，然后产生长期误判。……不能让交易来决定你的观点，而是让观点决定你的交易。$紫金黄金国际(02259)$ $中国海洋石油(00883)$ $中国石油(SH601857)$//@要有仁义礼智信:回复@斯托伯的天空:今年三四月份的时候，整个雪球都在说美国不敢加，只有斯大说没什么不敢加的</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">紫金矿业ADR</span>
+                <span class="stock-code">ZIJMY</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">斯托伯的天空</span>
+                        <span class="post-time">2026-10-18 08:31</span>
+                        <span class="post-opinion op-买入/加仓">买入/加仓</span>
+                        <a href="https://xueqiu.com/9493911686/412756258" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@持仓聚金: 昨晚我看最近的诺贝尔经济学奖伍德福德的主要观点，他认为预期（前瞻指引）很重要，比如现在油价很高，那大家预期通胀高，ZF和央行应该设置前瞻指引来降低中预期，例如告诉大家明年会加息500个基点。这个理论指导了美联储很多年。但是我们现在看到，现在沃什不提供前瞻指引，这个我一下就看明白了，他没法提供，他的空间太小了。所以，我说有种美联储就继续加，多加点，那我可能也会多买点。$紫金黄金国际(02259)$ $紫金矿业ADR(ZIJMY)$ $黄金概念(BK1473)$//@持仓聚金:回复@斯托伯的天空:其实就是斯大说过的，米国政策空间不大，大规模加息就把市场加爆，产生流动性危机，现在才</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">黄金概念</span>
+                <span class="stock-code">BK1473</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">斯托伯的天空</span>
+                        <span class="post-time">2026-10-18 08:31</span>
+                        <span class="post-opinion op-买入/加仓">买入/加仓</span>
+                        <a href="https://xueqiu.com/9493911686/412756258" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@持仓聚金: 昨晚我看最近的诺贝尔经济学奖伍德福德的主要观点，他认为预期（前瞻指引）很重要，比如现在油价很高，那大家预期通胀高，ZF和央行应该设置前瞻指引来降低中预期，例如告诉大家明年会加息500个基点。这个理论指导了美联储很多年。但是我们现在看到，现在沃什不提供前瞻指引，这个我一下就看明白了，他没法提供，他的空间太小了。所以，我说有种美联储就继续加，多加点，那我可能也会多买点。$紫金黄金国际(02259)$ $紫金矿业ADR(ZIJMY)$ $黄金概念(BK1473)$//@持仓聚金:回复@斯托伯的天空:其实就是斯大说过的，米国政策空间不大，大规模加息就把市场加爆，产生流动性危机，现在才</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">苹果</span>
+                <span class="stock-code">AAPL</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：天地侠影</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">天地侠影</span>
+                        <span class="post-time">2026-10-17 15:18</span>
+                        <span class="post-opinion op-看多">看多</span>
+                        <a href="https://xueqiu.com/8601813520/412728788" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">回复@药研前瞻: 为什么只看$苹果(AAPL)$ ？苹果其实已经自带了巴菲特的光环。美股市场，比苹果便宜的股票，应该不少。//@药研前瞻:回复@天地侠影:40PE的Appel和5个点收益的美债。这就是送分题啊。</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">宁德时代</span>
+                <span class="stock-code">SZ300750</span>
+                <span class="stock-sector">制造军工</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：愤怒的龙卷风</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">愤怒的龙卷风</span>
+                        <span class="post-time">2026-10-17 22:25</span>
+                        <span class="post-opinion op-看多">看多</span>
+                        <a href="https://xueqiu.com/5798578993/412747564" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">$宁德时代(SZ300750)$ $紫金矿业(SH601899)$ $兆易创新(SH603986)$ 业绩全部高增，股价全线深跌：五只明星股，跌的却是五种不同的东西光模块、存储、光纤、电池、有色金属——2026年A股五份业绩超预期、股价大回撤的标本</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">兆易创新</span>
+                <span class="stock-code">SH603986</span>
+                <span class="stock-sector">AI科技</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：愤怒的龙卷风</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">愤怒的龙卷风</span>
+                        <span class="post-time">2026-10-17 22:25</span>
+                        <span class="post-opinion op-看多">看多</span>
+                        <a href="https://xueqiu.com/5798578993/412747564" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">$宁德时代(SZ300750)$ $紫金矿业(SH601899)$ $兆易创新(SH603986)$ 业绩全部高增，股价全线深跌：五只明星股，跌的却是五种不同的东西光模块、存储、光纤、电池、有色金属——2026年A股五份业绩超预期、股价大回撤的标本</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">阿里巴巴-W</span>
+                <span class="stock-code">09988</span>
+                <span class="stock-sector">港股互联网</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：学知利行</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">学知利行</span>
+                        <span class="post-time">2026-10-18 15:48</span>
+                        <span class="post-opinion op-看多">看多</span>
+                        <a href="https://xueqiu.com/2681290304/412776480" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">$阿里巴巴-W(09988)$ 阿里巴巴在AI革命中的业务布局和模式与谷歌非常类似，只是业务和财务上的演进大约要晚两年多。当然，他们在传统互联网中的流量入口和商业模式相差很大，阿里巴巴面临的市场卷的程度也厉害很多。目前对持有阿里巴巴来说，需要的就是多一些耐心，持有和持续观察即可。</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">SpaceX</span>
+                <span class="stock-code">SPCX</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：徒步三萬里</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">徒步三萬里</span>
+                        <span class="post-time">2026-10-17 14:21</span>
+                        <span class="post-opinion op-买入/加仓">买入/加仓</span>
+                        <a href="https://xueqiu.com/4857977486/412726261" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">世界模型最新进展，无人驾驶最近动作很大 $SpaceX(SPCX)$ $小马智行-W(02026)$ $谷歌C(GOOG)$</div>
+                </div>
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">小马智行-W</span>
+                <span class="stock-code">02026</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：徒步三萬里</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">徒步三萬里</span>
+                        <span class="post-time">2026-10-17 14:21</span>
+                        <span class="post-opinion op-买入/加仓">买入/加仓</span>
+                        <a href="https://xueqiu.com/4857977486/412726261" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">世界模型最新进展，无人驾驶最近动作很大 $SpaceX(SPCX)$ $小马智行-W(02026)$ $谷歌C(GOOG)$</div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>四、主要看空、回避与谨慎标的</h2>
+    <div class="stock-grid">
+        
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">西部矿业</span>
+                <span class="stock-code">SH601168</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bear-strength">看空强度 -1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bear">看空1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：金哥777</div>
+            
+                <div class="post-item">
+                    <div class="post-meta">
+                        <span class="post-user">金哥777</span>
+                        <span class="post-time">2026-10-18 14:44</span>
+                        <span class="post-opinion op-看空">看空</span>
+                        <a href="https://xueqiu.com/1674052027/412773714" target="_blank" class="post-link">原文</a>
+                    </div>
+                    <div class="post-text">规划的是每天矿石处理量，我猜测以前设计的产能考虑了气候影响。总体设计矿山处理量是比规划的要大，但矿山很多都是智能化，无人化开采的，对于气候影响就要小得多了，还有一期的品位率应该比平均品位要高一点，前期开采应该是找品位率相对高一点的开采，这是露天矿可开采年限会很长，假设45年，前面20年产能相对平均而言品位率大概率会高一点。后面可能随着技术上的升级，或者厂房设备的升级，或者以后还会新增加更多设备让产能不会下降，但那都是二三十年后的事了。。。还有开藏格矿业股东大会的时候吴董事长说过矿山的储量是根据这矿石的价值来计算的，比如以前铜价3万，钼10万，银3元每克，金100元每克，巨龙铜矿是不值钱的，不值</div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>五、按赛道分类</h2>
+    <h3 class="sector-title">AI科技（3只）</h3><div class="stock-grid">
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">兆易创新</span>
+                <span class="stock-code">SH603986</span>
+                <span class="stock-sector">AI科技</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：愤怒的龙卷风</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">长鑫科技</span>
+                <span class="stock-code">SH688825</span>
+                <span class="stock-sector">AI科技</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：天地侠影</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">TCL科技</span>
+                <span class="stock-code">SZ000100</span>
+                <span class="stock-sector">AI科技</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：伊夫圣洛朗</div>
+            
+        </div></div><h3 class="sector-title">制造军工（2只）</h3><div class="stock-grid">
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">宁德时代</span>
+                <span class="stock-code">SZ300750</span>
+                <span class="stock-sector">制造军工</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：愤怒的龙卷风</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">庆铃汽车股份</span>
+                <span class="stock-code">01122</span>
+                <span class="stock-sector">制造军工</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：流浪行星</div>
+            
+        </div></div><h3 class="sector-title">有色资源（6只）</h3><div class="stock-grid">
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">藏格矿业</span>
+                <span class="stock-code">SZ000408</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bull-strength">看多强度 +9</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入2</span><span class="tag tag-bull">看多5</span><span class="tag tag-bear">看空1</span><span class="tag tag-user">2人</span></div>
+            <div class="stock-users">提及：学知利行、金哥777</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">紫金矿业</span>
+                <span class="stock-code">SH601899</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bull-strength">看多强度 +6</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多3</span><span class="tag tag-bear">看空1</span><span class="tag tag-user">4人</span></div>
+            <div class="stock-users">提及：学知利行、愤怒的龙卷风、金哥777、飞翔芸</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">紫金黄金国际</span>
+                <span class="stock-code">02259</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bull-strength">看多强度 +2</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多2</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">紫金矿业ADR</span>
+                <span class="stock-code">ZIJMY</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">黄金概念</span>
+                <span class="stock-code">BK1473</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">西部矿业</span>
+                <span class="stock-code">SH601168</span>
+                <span class="stock-sector">有色资源</span>
+                <span class="strength bear-strength">看空强度 -1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bear">看空1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：金哥777</div>
+            
+        </div></div><h3 class="sector-title">港股互联网（1只）</h3><div class="stock-grid">
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">阿里巴巴-W</span>
+                <span class="stock-code">09988</span>
+                <span class="stock-sector">港股互联网</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：学知利行</div>
+            
+        </div></div><h3 class="sector-title">能源煤炭（3只）</h3><div class="stock-grid">
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">中国海洋石油</span>
+                <span class="stock-code">00883</span>
+                <span class="stock-sector">能源煤炭</span>
+                <span class="strength bull-strength">看多强度 +3</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多2</span><span class="tag tag-user">2人</span></div>
+            <div class="stock-users">提及：学知利行、斯托伯的天空</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">中国石油</span>
+                <span class="stock-code">SH601857</span>
+                <span class="stock-sector">能源煤炭</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">潞安环能</span>
+                <span class="stock-code">SH601699</span>
+                <span class="stock-sector">能源煤炭</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：超级鹿鼎公</div>
+            
+        </div></div><h3 class="sector-title">其他（9只）</h3><div class="stock-grid">
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">心动公司</span>
+                <span class="stock-code">02400</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength bull-strength">看多强度 +3</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：逸修1</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">广汇能源</span>
+                <span class="stock-code">SH600256</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength bull-strength">看多强度 +2</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：金哥777</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">苹果</span>
+                <span class="stock-code">AAPL</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：天地侠影</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">SpaceX</span>
+                <span class="stock-code">SPCX</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：徒步三萬里</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">小马智行-W</span>
+                <span class="stock-code">02026</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：徒步三萬里</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">谷歌C</span>
+                <span class="stock-code">GOOG</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength bull-strength">看多强度 +1</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-buy">买入1</span><span class="tag tag-bull">看多1</span><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：徒步三萬里</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">海底捞</span>
+                <span class="stock-code">06862</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：斯托伯的天空</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">陕鼓动力</span>
+                <span class="stock-code">SH601369</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：天地侠影</div>
+            
+        </div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="stock-name">沈鼓集团</span>
+                <span class="stock-code">SH601091</span>
+                <span class="stock-sector">其他</span>
+                <span class="strength neutral-strength">多空均衡</span>
+            </div>
+            <div class="stock-tags"><span class="tag tag-user">1人</span></div>
+            <div class="stock-users">提及：天地侠影</div>
+            
+        </div></div>
+</div>
+
+<div class="section">
+    <h2>六、大V股票相关发言明细</h2>
+    
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">金哥777</span>
+                <span class="user-count">6条股票相关发言</span>
+                <span class="user-stocks">涉及：广汇能源、西部矿业、紫金矿业、藏格矿业</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-18 14:44</span>
+                    <span class="post-opinion op-看空">看空</span>
+                    <a href="https://xueqiu.com/1674052027/412773714" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">规划的是每天矿石处理量，我猜测以前设计的产能考虑了气候影响。总体设计矿山处理量是比规划的要大，但矿山很多都是智能化，无人化开采的，对于气候影响就要小得多了，还有一期的品位率应该比平均品位要高一点，前期开采应该是找品位率相对高一点的开采，这是露天矿可开采年限会很长，假设45年，前面20年产能相对平均而言品位率大概率会高一点。后面可能随着技术上的升级，或者厂房设备的升级，或者以后还会新增加更多设备让产能不会下降，但那都是二三十年后的事了。。。还有开藏格矿业股东大会的时候吴董事长说过矿山的储量是根据这矿石的价值来计算的，比如以前铜价3万，钼10万，银3元每克，金100元每克，巨龙铜矿是不值钱的，不值得开采的，然后铜价6万，钼价格20万，银8元，金300，伴生矿就很有价值了，吨铜净利润也很不错了，像现在铜价11万，钼54万➕，银14元左右，金900元左右，吨铜净利润就可能接近8万了，这矿就非常值钱</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-17 15:30</span>
+                    <span class="post-opinion op-买入/加仓">买入/加仓</span>
+                    <a href="https://xueqiu.com/1674052027/412729271" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">回复@苏州湾1号玩家: 你问这些问题矛盾很大，美国利率高和我没有什么关系，我又不可以人民币换美元拿去买美债，如果紫金矿业是美国上市，美国企业像$紫金矿业(SH601899)$ 这样的竞争力，资源量，成长性，按美国的金铜股给估值紫金最少2万亿人民币，还是美国人可以买百分之5➕股息率的美债情况下。国内的资金只能和国内的无风险利率比，目前看美国加息减息和大宗商品价格没有太多关联性，刚刚才有人和我讲等美国减息了铜的价格有人预计会下跌百分之20左右，我看了历史记录金铜等大宗商品价格根本和美国利率多少没有任何关联关系，特别是铜属于工业金属，价格只和供需关系有关，未来股价高低，大宗商品价格无法判断，紫金主要是现在高速成长期，如果等资本开支小了，成长性弱了一样可能百分之70到80分红率，投资是看未来，哪怕国内有百分之5到6的无风险利率我还是愿意持有紫金矿业，藏格矿业，因为我自己判断这些公司回报率肯定不止百</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-17 13:23</span>
+                    <span class="post-opinion op-偏多">偏多</span>
+                    <a href="https://xueqiu.com/1674052027/412723693" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">回复@慢牛来了2020: 我一直研究的，，煤矿价格上涨对于产能大，露天煤矿是非常大的利好。。。谢谢，以后有机会再买吧，现在先等等藏格矿业，//@慢牛来了2020:回复@金哥777:$藏格矿业(SZ000408)$ $广汇能源(SH600256)$金哥5年后藏格矿业巨龙铜矿的投资收益也有164亿，加上钾肥和碳酸锂合计200亿，藏格未来可期。同时我早上也估算过，广汇4年后年产能1亿吨露天煤，加上淖梧铁路通车和临哈铁路电气化改造完成使得广汇煤炭轻松直达北港且完全运费有望低至360元，加上170元开采成本，合计总成本530元。综上，到2030年起，只要北港煤价高于700元，可确保广汇煤炭吨净利润高于100元，如果北港年平均价格800元，则可确保广汇动力煤年平均净利润达到150元。而广汇富油煤本地销售目前吨净利润高于动力煤高50元，三年后供不应求局面会更大，富油煤吨净利润会更高，此只按照动力煤净利润</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-17 13:21</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/1674052027/412723611" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">回复@厚积薄发001: 加息有人讲大宗商品价格会跌，加息后发现铜没跌，还涨了，然后又有人说既然你加息不跌，那以后减息铜总要跌吧？有些人总结就是不管怎么样以后都要大跌，，其实铜价如果跌回9.5万左右，对于藏格矿业来说也还是暴利，吨铜净利润有6万➕，我也很满意了，$藏格矿业(SZ000408)$//@厚积薄发001:回复@银锂:不加息了铜不是要涨？为什么回落？</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-17 13:16</span>
+                    <span class="post-opinion op-买入/加仓">买入/加仓</span>
+                    <a href="https://xueqiu.com/1674052027/412723392" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">回复@浩熠投资: 无法预测，做期货不管涨跌，如果一直满仓必然清0回到解放前，我买股票不需要大宗商品价格涨多少，哪怕铜价未来跌百分之30，以后吨铜净利润跌到5万，五年后藏格每股分红也许还有8元，藏格矿业股价也可能涨到200左右，哪怕股价不涨每股分红8元我也可以接受。。。买期货估计爆仓几十次了这五年$藏格矿业(SZ000408)$//@浩熠投资:回复@金哥777:铜，锂，钾肥的未来单价能预测吗，如果能岂不是做期货更赚钱！</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-17 12:00</span>
+                    <span class="post-opinion op-偏多">偏多</span>
+                    <a href="https://xueqiu.com/1674052027/412719464" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">回复@ertu: 明年巨龙铜矿净利润估计300亿左右了，如果给12倍市盈率，就是3600亿，估值就是1100亿➕，明年锂权益产能3万吨左右，10万左右锂价格，一年净利润也是10亿➕，钾肥明年净利润13亿左右，如果给15倍市盈率也有345亿，如果今年的利润对应现在的估值确实不是很低估。。。但你用成长来计算估值这公司肯定是严重低估的，$藏格矿业(SZ000408)$//@ertu:回复@金哥777:巨龙铜业净利润 200 亿，PE12 倍，分给藏格的市值不到750亿，钾锂15亿，PE15倍，不到250亿，现在的市值是合理，只有巨龙三期完成投产，铜价高位，老挝百万吨钾满产，可能破到达大家预想的一个新高度</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">斯托伯的天空</span>
+                <span class="user-count">3条股票相关发言</span>
+                <span class="user-stocks">涉及：中国海洋石油、海底捞、黄金概念、紫金黄金国际、紫金矿业ADR、中国石油</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-18 10:24</span>
+                    <span class="post-opinion op-看多">看多</span>
+                    <a href="https://xueqiu.com/9493911686/412761573" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">回复@要有仁义礼智信: 我的原话应该是：如果原油持续上涨或者维持高位，那美联储也不得不加，届时该加就加，但是空间很有限。……我们不能因为持有了什么资产就主观臆测这种宏观政策，一定要随时站在施政者和第三人的角度去思考问题，不然很容易得出错误结论，然后产生长期误判。……不能让交易来决定你的观点，而是让观点决定你的交易。$紫金黄金国际(02259)$ $中国海洋石油(00883)$ $中国石油(SH601857)$//@要有仁义礼智信:回复@斯托伯的天空:今年三四月份的时候，整个雪球都在说美国不敢加，只有斯大说没什么不敢加的</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-18 08:31</span>
+                    <span class="post-opinion op-买入/加仓">买入/加仓</span>
+                    <a href="https://xueqiu.com/9493911686/412756258" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">回复@持仓聚金: 昨晚我看最近的诺贝尔经济学奖伍德福德的主要观点，他认为预期（前瞻指引）很重要，比如现在油价很高，那大家预期通胀高，ZF和央行应该设置前瞻指引来降低中预期，例如告诉大家明年会加息500个基点。这个理论指导了美联储很多年。但是我们现在看到，现在沃什不提供前瞻指引，这个我一下就看明白了，他没法提供，他的空间太小了。所以，我说有种美联储就继续加，多加点，那我可能也会多买点。$紫金黄金国际(02259)$ $紫金矿业ADR(ZIJMY)$ $黄金概念(BK1473)$//@持仓聚金:回复@斯托伯的天空:其实就是斯大说过的，米国政策空间不大，大规模加息就把市场加爆，产生流动性危机，现在才开始加息已经有点顶不住了。</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-17 21:04</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/9493911686/412744004" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">回复@斯托伯的天空: 问了一下AI，如果海底捞给全员缴纳社保，会增加数十亿的用人成本我一听这数据有点离谱，于是去搜了一下他的依据。它还真给我找到了，主要是劳务派遣和兼职占比还是比较高的，兼职压根儿不交，而劳务派遣里面参保率比较低，还经常断。如果这一块全部让海底捞持续承担，那确实成本开支大，不说数十亿，但十来亿可能是有的～压力山大$海底捞(06862)$//@斯托伯的天空:回复@斯托伯的天空:听说有些店准备返聘已退休人员，并且提高工资待遇～这样就不用交社B了都是被逼出来的。如果餐饮行业全部强制交，那好多店是开不下去的，会导致很多低收入群体失业，变成庞大的流民。</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">天地侠影</span>
+                <span class="user-count">3条股票相关发言</span>
+                <span class="user-stocks">涉及：苹果、沈鼓集团、陕鼓动力、长鑫科技</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-18 11:00</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/8601813520/412763738" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$陕鼓动力(SH601369)$ 100多亿的市值摆在那里，为何$沈鼓集团(SH601091)$ 的市值能炒到2000多亿？二者都是百年老企，体量相当。</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-17 15:18</span>
+                    <span class="post-opinion op-看多">看多</span>
+                    <a href="https://xueqiu.com/8601813520/412728788" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">回复@药研前瞻: 为什么只看$苹果(AAPL)$ ？苹果其实已经自带了巴菲特的光环。美股市场，比苹果便宜的股票，应该不少。//@药研前瞻:回复@天地侠影:40PE的Appel和5个点收益的美债。这就是送分题啊。</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-16 22:24</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/8601813520/412685879" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">Q2营收995亿元，净利润528.43亿元；Q3营收1147-1197亿元，净利润预计533.95亿-548.95亿元。存储芯片的毛利率开始下降？$长鑫科技(SH688825)$</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">学知利行</span>
+                <span class="user-count">2条股票相关发言</span>
+                <span class="user-stocks">涉及：紫金矿业、藏格矿业、阿里巴巴-W、中国海洋石油</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-18 15:48</span>
+                    <span class="post-opinion op-看多">看多</span>
+                    <a href="https://xueqiu.com/2681290304/412776480" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$阿里巴巴-W(09988)$ 阿里巴巴在AI革命中的业务布局和模式与谷歌非常类似，只是业务和财务上的演进大约要晚两年多。当然，他们在传统互联网中的流量入口和商业模式相差很大，阿里巴巴面临的市场卷的程度也厉害很多。目前对持有阿里巴巴来说，需要的就是多一些耐心，持有和持续观察即可。</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-18 15:21</span>
+                    <span class="post-opinion op-看多">看多</span>
+                    <a href="https://xueqiu.com/2681290304/412775150" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$藏格矿业(SZ000408)$ $紫金矿业(SH601899)$ $中国海洋石油(00883)$ 我们赚藏格和紫金矿业的钱也好，中海油的钱也好，从底层逻辑上说，实际是在赚全球通胀叠加新技术革命的钱，通胀推高大宗资源价格，新技术革命产生新的资源需求，铜基本是两者的叠加。当然，国内定价的东西，目前实际是处于通缩阶段，短期内很难有大的机会。这些应该是往后中期的大逻辑，短期的股价波动 实际是不断给投资者机会。</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">飞翔芸</span>
+                <span class="user-count">2条股票相关发言</span>
+                <span class="user-stocks">涉及：紫金矿业</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-17 21:21</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/9957341637/412744779" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$紫金矿业(SH601899)$ 网页链接</div>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-17 15:08</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/9957341637/412728323" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$紫金矿业(SH601899)$ 紫金矿业影响力20名院士！我看到陈景河董事长了</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">伊夫圣洛朗</span>
+                <span class="user-count">1条股票相关发言</span>
+                <span class="user-stocks">涉及：TCL科技</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-17 11:01</span>
+                    <span class="post-opinion op-多空分歧">多空分歧</span>
+                    <a href="https://xueqiu.com/1066188300/412715642" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">回复@飞毛腿啊嗒: 说的很好//@飞毛腿啊嗒:回复@没炒烂的铜豌豆:有几点错误，1）面板产线生命周期不会只有几年，而是设备折旧周期只有8年左右，理论上，如果产品赚钱，跑50年以上都没问题，面板大规模发展也就20多年，2000年左右的线现在都在跑着。2）十几年前，面板世代线升级比较快，下一代比上一代有尺寸切割优势，但近10年这个已经不再升级，最佳玻璃基板锁死在G8.5/8.6、G10.5/11，这些尺寸对应现在市面主流55/65/75 inch产品已经是最佳切割效率，不存在一直升级，新线淘汰旧线问题。面板底层晶体管等技术，大部分都是十几二十前就已经定型的技术。3）面板今天的局面主要是最近十来年投的线太多了，造成产能过剩，控产只能保证合理的利润率。再过三年左右，随着主流尺寸升级，消耗更多产能，造成产能紧缺，面板稍涨价，才能赚大钱。现在布局，拿个三年以上，可能会有不错收益。短期可能会碰到消费进一</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">愤怒的龙卷风</span>
+                <span class="user-count">1条股票相关发言</span>
+                <span class="user-stocks">涉及：兆易创新、紫金矿业、宁德时代</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-17 22:25</span>
+                    <span class="post-opinion op-看多">看多</span>
+                    <a href="https://xueqiu.com/5798578993/412747564" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$宁德时代(SZ300750)$ $紫金矿业(SH601899)$ $兆易创新(SH603986)$ 业绩全部高增，股价全线深跌：五只明星股，跌的却是五种不同的东西光模块、存储、光纤、电池、有色金属——2026年A股五份业绩超预期、股价大回撤的标本</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">徒步三萬里</span>
+                <span class="user-count">1条股票相关发言</span>
+                <span class="user-stocks">涉及：小马智行-W、谷歌C、SpaceX</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-17 14:21</span>
+                    <span class="post-opinion op-买入/加仓">买入/加仓</span>
+                    <a href="https://xueqiu.com/4857977486/412726261" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">世界模型最新进展，无人驾驶最近动作很大 $SpaceX(SPCX)$ $小马智行-W(02026)$ $谷歌C(GOOG)$</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">逸修1</span>
+                <span class="user-count">1条股票相关发言</span>
+                <span class="user-stocks">涉及：心动公司</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-18 11:01</span>
+                    <span class="post-opinion op-看多">看多</span>
+                    <a href="https://xueqiu.com/1936609590/412763791" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">回复@加金星光1009: 之前都没注意到，这人提到才注意到小游戏的最低出价5块变3块，这个水准那些变现能力强、留存好的小游戏即使是广告变现也能出得起，内购变现更不要说，难怪最近首页也看到小游戏的广告了 查看图片//@加金星光1009:回复@逸修1:Step-5-Preview:这份月报是 **TapTap 分部**最高频的经营先行指标。最关键的一点：REP 高消耗榜上的《伊莫》（FunPlus 发行）、《我的休闲时光》（卓动/天之梦发行）**都是第三方游戏，心动自研产品不在榜上**——REP 消耗基本是外部广告需求的“干净样本”，不含关联交易噪音，是观察 TapTap 广告景气少有的理想窗口。## 三个分析角度1. **排雷**：TapTap 上半年疲弱是行业性而非公司性——若 Q4 广告市场回暖，收入弹性大；2. **跟踪仪表盘**：量（REP消耗/MAU）、价（CPA/eCPM）、货币</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">超级鹿鼎公</span>
+                <span class="user-count">1条股票相关发言</span>
+                <span class="user-stocks">涉及：潞安环能</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-17 09:22</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/8790885129/412709421" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$潞安环能(SH601699)$ 三季度利润有多少，大家说说</div>
+            </div></div>
+        <div class="user-block">
+            <div class="user-header">
+                <span class="user-name">流浪行星</span>
+                <span class="user-count">1条股票相关发言</span>
+                <span class="user-stocks">涉及：庆铃汽车股份</span>
+            </div>
+            <div class="post-item">
+                <div class="post-meta">
+                    <span class="post-time">2026-10-18 16:23</span>
+                    <span class="post-opinion op-中性/讨论">中性/讨论</span>
+                    <a href="https://xueqiu.com/1193805304/412778047" target="_blank" class="post-link">原文链接</a>
+                </div>
+                <div class="post-text">$庆铃汽车股份(01122)$ 疯狂过山车，港股令人惊叹</div>
+            </div></div>
+</div>
+
+<div class="footer">
+    本报告由程序自动生成，数据来源于雪球网公开信息，仅供参考，不构成投资建议。<br>
+    生成时间：2026-10-18 22:00:04
+</div>
+</div>
+</body>
+</html>
